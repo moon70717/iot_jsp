@@ -27,9 +27,7 @@ public class UserServlet extends HttpServlet {
 		String uri=req.getRequestURI();
 		String cmd =getCommand(uri);
 		if(cmd.equals("list")) {
-			
 		}else if(cmd.equals("view")) {
-			
 		}else {
 			cmd="/common/error";
 		}
@@ -37,10 +35,10 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher rd=req.getRequestDispatcher(cmd);
 		rd.forward(req, res);
 		StringBuffer url=req.getRequestURL();
-		/*PrintWriter out=res.getWriter();
+		PrintWriter out=res.getWriter();
 		
 		out.print("url: "+url+"<br>");
-		out.print("uri: "+uri+"<br>");*/
+		out.print("uri: "+uri+"<br>");
 	}
 	
 	@Override

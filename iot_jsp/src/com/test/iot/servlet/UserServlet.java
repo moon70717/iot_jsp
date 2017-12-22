@@ -23,6 +23,7 @@ public class UserServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		res.setCharacterEncoding("utf-8");
 		res.setContentType("text/html;charset=utf-8");
+		PrintWriter out=res.getWriter();
 		
 		String uri=req.getRequestURI();
 		String cmd =getCommand(uri);
@@ -35,7 +36,7 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher rd=req.getRequestDispatcher(cmd);
 		rd.forward(req, res);
 		StringBuffer url=req.getRequestURL();
-		PrintWriter out=res.getWriter();
+		
 		
 		out.print("url: "+url+"<br>");
 		out.print("uri: "+uri+"<br>");

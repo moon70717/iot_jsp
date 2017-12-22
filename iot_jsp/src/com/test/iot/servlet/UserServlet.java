@@ -40,11 +40,11 @@ public class UserServlet extends HttpServlet {
 		String uri = req.getRequestURI();
 		String cmd = getCommand(uri);
 		if (cmd.equals("list")) {
-			us.getUserList();
+			req.setAttribute("list", us.getUserList());
 		} else if (cmd.equals("list")) {
 			//us.getUser();
 		} else {
-			cmd = "view/common/error";
+			cmd = "/WEB-INF/view/common/error";
 		}
 		uri ="/WEB-INF/view"+uri+".jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(uri);

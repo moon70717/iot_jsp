@@ -26,4 +26,13 @@ public class DBCon {
 		System.out.println(DBCon.conn);
 		return DBCon.conn;
 	}
+	
+	public static void closeCon() {
+		try {
+			DBCon.conn.close();
+			DBCon.conn=null;
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

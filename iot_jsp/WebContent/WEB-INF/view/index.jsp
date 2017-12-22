@@ -19,5 +19,11 @@ a {
 	안녕하세요
 	<br>
 	<a href="/iot.do">유저리스트</a>
+	<br>
+	<%
+		String realPath = application.getRealPath(request.getRequestURI());
+		realPath = realPath.substring(0, realPath.lastIndexOf(System.getProperty("file.separator")));
+		out.println(realPath);
+	%>
 </body>
 </html>

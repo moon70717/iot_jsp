@@ -73,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int executeUpdate(String sql) {
+	public int executeUpdate(String sql) {// sql만 들어왔을때는 여기서 되게, 아직 값 않받는 상태니깐 무조건 여기로 들감
 		return executeUpdate(sql,null);
 	}
 	

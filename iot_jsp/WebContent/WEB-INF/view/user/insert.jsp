@@ -8,6 +8,11 @@
 <title>유저입력</title>
 </head>
 <body>
-
+<%
+int result=(Integer)request.getAttribute("insert");
+if(result==1){
+	out.print("입력성공!");
+}
+%>
 </body>
 </html>

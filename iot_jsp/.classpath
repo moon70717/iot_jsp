@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="D:/iot_study/workspaces/git/iot_jsp/iot_jsp/WebContent/WEB-INF/lib"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

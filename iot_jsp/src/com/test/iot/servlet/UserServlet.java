@@ -42,12 +42,12 @@ public class UserServlet extends HttpServlet {
 		if (cmd.equals("list")) {
 			us.getUserList();
 		} else if (cmd.equals("list")) {
-			us.getUser();
+			//us.getUser();
 		} else {
-			cmd = "/view/common/error";
+			cmd = "view/common/error";
 		}
-		cmd += ".jsp";
-		RequestDispatcher rd = req.getRequestDispatcher(cmd);
+		uri ="/WEB-INF/view"+uri+".jsp";
+		RequestDispatcher rd = req.getRequestDispatcher(uri);
 		rd.forward(req, res);
 	}
 }

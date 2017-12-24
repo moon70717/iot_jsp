@@ -43,14 +43,17 @@ public class UserServlet extends HttpServlet {
 		if (cmd.equals("list")) {
 			req.setAttribute("list", us.getUserList());
 		} else if (cmd.equals("insert")) {
-			String sql="INSERT INTO USER_INFO(UINAME,UIAGE,UIID,UIPWD,CINO,uiregdate,address) " + 
-					"VALUES ('갑길동',33,'ttestㄴㄴ','GGGㄴㄴ',3,Now(),'서울')";
+			int i=1;
 			LinkedHashMap<String, Object> hm=new LinkedHashMap<String, Object>();
-			req.setAttribute("insert", us.executeUpdate(sql,null));// 여기도 일단 받는값 없으니 이렇게 임시로 채움
-		} else if (cmd.equals("delet")) {
-			String sql="delete from user_info where uino=33";
+			req.setAttribute("insert", us.executeUpdate(i,null));
+		} else if (cmd.equals("delete")) {
+			int i=2;
 			LinkedHashMap<String, Object> hm=new LinkedHashMap<String, Object>();
-			req.setAttribute("insert", us.executeUpdate(sql,null));// 여기도 일단 받는값 없으니 이렇게 임시로 채움
+			req.setAttribute("delete", us.executeUpdate(i,null));
+		} else if (cmd.equals("update")) {
+			int i=3;
+			LinkedHashMap<String, Object> hm=new LinkedHashMap<String, Object>();
+			req.setAttribute("ㅕㅔㅇㅁㅅㄷ", us.executeUpdate(i,null));
 		} 
 		
 		else {

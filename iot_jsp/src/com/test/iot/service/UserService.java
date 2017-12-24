@@ -8,5 +8,6 @@ public interface UserService {
 
 	public ArrayList<HashMap<String,Object>> getUserList();
 	public HashMap<String,Object> getUser();
-	public int executeUpdate(String sql,LinkedHashMap<String,Object> hm);
+	public int executeUpdate(int i,LinkedHashMap<String,Object> hm);
+	public String mkSql(int i);
 }

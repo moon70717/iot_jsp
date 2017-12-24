@@ -1,11 +1,13 @@
 package com.test.iot.dao.impl;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 
 import com.test.iot.common.DBCon;
@@ -14,6 +16,7 @@ import com.test.iot.dao.UserDAO;
 public class UserDAOImpl implements UserDAO {
 	PreparedStatement ps;
 	ResultSet rs;
+	
 	@Override
 	public ArrayList<HashMap<String, Object>> selectUserList() {
 		ps = null;
@@ -31,7 +34,7 @@ public class UserDAOImpl implements UserDAO {
 		return userList;
 	}
 	
-	public ArrayList<HashMap<String, Object>> parseResultSet(ResultSet set){
+	public ArrayList<HashMap<String, Object>> parseResultSet(ResultSet set){ // 유저 키값에 맞춰서 데이터 넣는용도
 		ArrayList<HashMap<String, Object>> userList=new ArrayList<HashMap<String, Object>>();
 		ResultSetMetaData rsmd;
 		try {
@@ -52,6 +55,17 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userList;
 	}
+	
+	public void setParameter(LinkedHashMap<String,Object> hm) throws SQLException {
+		if(hm!=null) {
+			Iterator<String> it = hm.keySet().iterator();
+			int idx = 1;
+			while(it.hasNext()) {
+				String key = it.next();
+				ps.setObject(idx++, hm.get(key));
+			}
+		}
+    }
 
 	@Override
 	public HashMap<String, Object> selectUser() {
@@ -59,24 +73,29 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int executeUpdate(String sql, LinkedHashMap<String, Object> hm) {//나중에 입력받게 구현할때 좀더 추가
+	public int executeUpdate(String sql, LinkedHashMap<String, Object> hm) {
+		Connection con=DBCon.getCon();
 		int result =0;
 		try {
-			ps=DBCon.getCon().prepareStatement(sql);
-			//setpara   이부분 할거
+			ps=con.prepareStatement(sql);
+			setParameter(hm);
 			result=ps.executeUpdate();
+			con.commit();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		}
+		con=null;
 		return result;
 	}
 
 	@Override
-	public int executeUpdate(String sql) {// sql만 들어왔을때는 여기서 되게, 아직 값 않받는 상태니깐 무조건 여기로 들감
+	public int executeUpdate(String sql) {
 		return executeUpdate(sql,null);
 	}
 	
-	
-
 }

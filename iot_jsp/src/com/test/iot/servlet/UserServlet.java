@@ -43,20 +43,27 @@ public class UserServlet extends HttpServlet {
 		if (cmd.equals("list")) {
 			req.setAttribute("list", us.getUserList());
 		} else if (cmd.equals("insert")) {
-			int i=1;
-			LinkedHashMap<String, Object> hm=new LinkedHashMap<String, Object>();
-			req.setAttribute("insert", us.executeUpdate(i,null));
+			int i = 1;
+			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
+			hm.put("UINAME", "홍길동");
+			hm.put("UIAGE", 33);
+			hm.put("UIID", "hoong");
+			hm.put("UIPWD", "hoong");
+			hm.put("CINO", 3);
+			hm.put("address", "서울");
+			req.setAttribute("insert", us.executeUpdate(i, null));
 		} else if (cmd.equals("delete")) {
-			int i=2;
-			LinkedHashMap<String, Object> hm=new LinkedHashMap<String, Object>();
-			req.setAttribute("delete", us.executeUpdate(i,null));
+			int i = 2;
+			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
+			hm.put("uino", 3);
+			req.setAttribute("delete", us.executeUpdate(i, null));
 		} else if (cmd.equals("update")) {
-			int i=3;
-			LinkedHashMap<String, Object> hm=new LinkedHashMap<String, Object>();
-			req.setAttribute("ㅕㅔㅇㅁㅅㄷ", us.executeUpdate(i,null));
-		} 
-		
-		else {
+			int i = 3;
+			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
+			hm.put("address", "부산");
+			hm.put("uino", 5);
+			req.setAttribute("update", us.executeUpdate(i, null));
+		} else {
 			cmd = "/WEB-INF/view/common/error";
 		}
 		uri = "/WEB-INF/view" + uri + ".jsp";

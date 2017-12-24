@@ -1,3 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="/WEB-INF/view/common/common.jsp"%>
@@ -11,7 +13,11 @@
 <%
 int result=(Integer)request.getAttribute("insert");
 if(result==1){
-	out.print("입력성공!");
+	out.print("입력성공!<br>");
+}
+ArrayList<HashMap<String,Object>> userList=(ArrayList<HashMap<String,Object>>)request.getAttribute("list");
+for(HashMap<String,Object> hm:userList){
+	out.print(hm+"<br>");
 }
 %>
 </body>

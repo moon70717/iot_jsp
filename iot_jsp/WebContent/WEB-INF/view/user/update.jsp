@@ -1,25 +1,23 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.HashMap"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/common/common.jsp"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ìœ ì €ë¦¬ìŠ¤íŠ¸</title>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>À¯Àú ¼öÁ¤</title>
 </head>
 <body>
 <%
-
-
+int result=(Integer)request.getAttribute("update");
+if(result==1){
+	out.print("¼öÁ¤¼º°ø!<br>");
+}
 ArrayList<HashMap<String,Object>> userList=(ArrayList<HashMap<String,Object>>)request.getAttribute("list");
-
 for(HashMap<String,Object> hm:userList){
 	out.print(hm+"<br>");
 }
 %>
-
-
 </body>
 </html>

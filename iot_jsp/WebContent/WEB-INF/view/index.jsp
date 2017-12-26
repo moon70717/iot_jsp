@@ -16,14 +16,14 @@ a {
 </style>
 </head>
 <body>
-	안녕하세요
-	<br>
-	<a href="/iot.do">유저리스트</a>
-	<br>
-	<%
-		String realPath = application.getRealPath(request.getRequestURI());
-		realPath = realPath.substring(0, realPath.lastIndexOf(System.getProperty("file.separator")));
-		out.println(realPath);
-	%>
+	<a href="/user/list">유저 리스트</a><br>
+	<a href="/user/insert">유저 추가</a><br>
+	<a href="/user/delete">유저 삭제</a><br>
+	<a href="/user/update">유저 수정</a><br>
+	
+	<a href="/class/list">반 리스트</a><br>
+	<a href="/class/insert">반 추가</a><br>
+	<a href="/class/delete">반 삭제</a><br>
+	<a href="/class/update">반 수정</a><br>
 </body>
 </html>

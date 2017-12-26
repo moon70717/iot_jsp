@@ -8,9 +8,10 @@ import java.util.LinkedHashMap;
 import com.test.iot.common.DBCon;
 import com.test.iot.dao.UserDAO;
 import com.test.iot.dao.impl.UserDAOImpl;
+import com.test.iot.service.ClassService;
 import com.test.iot.service.UserService;
 
-public class UserServiceImpl implements UserService {
+public class ClassServiceImpl implements ClassService {
 	Connection con;
 	private UserDAO ud = new UserDAOImpl();
 
@@ -40,12 +41,12 @@ public class UserServiceImpl implements UserService {
 	public String mkSql(int i) {
 		String sql = "";
 		if (i == 1) {// insert
-			sql = "INSERT INTO USER_INFO(UINAME,UIAGE,UIID,UIPWD,CINO,uiregdate,address) "
-					+ "VALUES (?,?,?,?,?,Now(),?)";
+			sql = "INSERT INTO CLASS_INFO(CINAME,CIDESC) "
+					+ "VALUES (?,?)";
 		} else if (i == 2) {// delete
-			sql = "delete from user_info where uino=?";
+			sql = "delete from user_info where CINO=?";
 		} else if (i == 3) {// update
-			sql = "update user_info set address=? where uino=?";
+			sql = "update user_info set CIDESC=? where CINO=?";
 		} else {
 			System.out.println("에러가 발생했습니다");
 		}

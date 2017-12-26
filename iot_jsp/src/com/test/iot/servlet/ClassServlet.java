@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.test.iot.service.UserService;
 import com.test.iot.service.impl.UserServiceImpl;
 
-public class UserServlet extends HttpServlet {
+public class ClassServlet extends HttpServlet {
 
-	UserService us = new UserServiceImpl();
+	UserService ci = new UserServiceImpl();
 
 	public String getCommand(String uri) {
 		int idx = uri.lastIndexOf("/");
@@ -41,28 +41,24 @@ public class UserServlet extends HttpServlet {
 		String uri = req.getRequestURI();
 		String cmd = getCommand(uri);
 		if (cmd.equals("list")) {
-			req.setAttribute("list", us.getUserList());
+			req.setAttribute("list", ci.getUserList());
 		} else if (cmd.equals("insert")) {
 			int i = 1;
 			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
-			hm.put("UINAME", "홍길동");
-			hm.put("UIAGE", 33);
-			hm.put("UIID", "hoong");
-			hm.put("UIPWD", "hoong");
-			hm.put("CINO", 3);
-			hm.put("address", "서울");
-			req.setAttribute("insert", us.executeUpdate(i, hm));
+			hm.put("CINAME", "클래스1");
+			hm.put("CIDSCE", "클래스1");
+			req.setAttribute("insert", ci.executeUpdate(i, hm));
 		} else if (cmd.equals("delete")) {
 			int i = 2;
 			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
-			hm.put("uino", 3);
-			req.setAttribute("delete", us.executeUpdate(i, hm));
+			hm.put("CINO", 3);
+			req.setAttribute("delete", ci.executeUpdate(i, hm));
 		} else if (cmd.equals("update")) {
 			int i = 3;
 			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
-			hm.put("address", "부산");
-			hm.put("uino", 5);
-			req.setAttribute("update", us.executeUpdate(i, hm));
+			hm.put("CIDSCE", "바뀐이름");
+			hm.put("CINO", 5);
+			req.setAttribute("update", ci.executeUpdate(i, hm));
 		} else {
 			cmd = "/WEB-INF/view/common/error";
 		}

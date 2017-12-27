@@ -6,8 +6,11 @@ import java.util.LinkedHashMap;
 
 public interface UserService {
 
-	public ArrayList<HashMap<String,Object>> getUserList();
-	public HashMap<String,Object> getUser();
-	public int executeUpdate(int i,LinkedHashMap<String,Object> hm);
-	public String mkSql(int i);
+	public ArrayList<HashMap<String, Object>> getUserList(String name);
+
+	public ArrayList<HashMap<String, Object>> getUser(int i, String name);
+
+	public int executeUpdate(int i, LinkedHashMap<String, Object> hm, String name);
+
+	public String mkSql(int i, String name);
 }

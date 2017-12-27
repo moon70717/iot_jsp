@@ -6,10 +6,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public interface UserDAO {
-	
-	public ArrayList<HashMap<String,Object>> selectUserList();
-	public HashMap<String,Object> selectUser(); 
-	public int executeUpdate(String sql,LinkedHashMap<String,Object> hm);
+
+	public ArrayList<HashMap<String, Object>> selectUserList(String sql);
+
+	public HashMap<String, Object> selectUser();
+
+	public int executeUpdate(String sql, LinkedHashMap<String, Object> hm);
+
 	public int executeUpdate(String sql);
-	public void setParameter(LinkedHashMap<String,Object> hm) throws SQLException;
+
+	public void setParameter(LinkedHashMap<String, Object> hm) throws SQLException;
 }

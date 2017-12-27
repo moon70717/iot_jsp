@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	var arr=new Array();
+	/* alert(arr.length); */
+	arr[arr.length]="1";
+	arr[arr.length]=true;
+	arr[arr.length]=200;
+	arr.push(123123.123);
+	arr.splice(1,1);
+	
+	for(var i=0;i<arr.length;i++){
+		document.write("arr["+i+"] = "+arr[i]+" : "+(typeof arr[i])+"<br>");
+	}
+	
+	arr=[{"test":12313},{"test":2222}];
+	document.write(arr[1].test+"<br>");
+	
+</script>
+</body>
+</html>

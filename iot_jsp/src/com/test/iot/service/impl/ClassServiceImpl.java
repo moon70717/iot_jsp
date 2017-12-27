@@ -6,14 +6,13 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import com.test.iot.common.DBCon;
-import com.test.iot.dao.UserDAO;
-import com.test.iot.dao.impl.UserDAOImpl;
+import com.test.iot.dao.ClassDAO;
+import com.test.iot.dao.impl.ClassDAOImpl;
 import com.test.iot.service.ClassService;
-import com.test.iot.service.UserService;
 
 public class ClassServiceImpl implements ClassService {
 	Connection con;
-	private UserDAO ud = new UserDAOImpl();
+	private ClassDAO ud = new ClassDAOImpl();
 
 	@Override
 	public ArrayList<HashMap<String, Object>> getUserList() {

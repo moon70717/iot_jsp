@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test</title>
+<style type="text/css">
+* {
+	text-decoration: none;
+}
+</style>
+
+</head>
+<body>
+	<a id="a1" href="http://naver.com">naver<br></a>
+	<a id="a2" href="http://google.com">google<br></a>
+	<a id="a3" href="http://daum.net">daum<br></a>
+	<a id="a4" href="http://nate.com">nate<br></a>
+	<div id="testDiv"><a>test div</a></div>
+	outter div
+</body>
+<script>
+	/* alert(document.getElementById("a1")); */
+	var divObj=document.getElementById("testDiv");
+	alert(divObj.firstChild.innerHTML);
+</script>
+</html>

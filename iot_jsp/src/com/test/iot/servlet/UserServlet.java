@@ -16,6 +16,14 @@ public class UserServlet extends HttpServlet {
 
 	UserService us = new UserServiceImpl();
 
+	public String getName(String uri) {
+		int idx = uri.substring(1, uri.length()).indexOf("/");
+		if (idx != 1) {
+			return uri.substring(1, idx + 1);
+		}
+		return "";
+	}
+
 	public String getCommand(String uri) {
 		int idx = uri.lastIndexOf("/");
 		if (idx != -1) {
@@ -40,8 +48,9 @@ public class UserServlet extends HttpServlet {
 		res.setContentType("text/html;charset=utf-8");
 		String uri = req.getRequestURI();
 		String cmd = getCommand(uri);
+		String name = getName(uri);
 		if (cmd.equals("list")) {
-			req.setAttribute("list", us.getUserList());
+			req.setAttribute("list", us.getUserList(name));
 		} else if (cmd.equals("insert")) {
 			int i = 1;
 			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
@@ -51,18 +60,18 @@ public class UserServlet extends HttpServlet {
 			hm.put("UIPWD", "hoong");
 			hm.put("CINO", 3);
 			hm.put("address", "서울");
-			req.setAttribute("insert", us.executeUpdate(i, hm));
+			req.setAttribute("insert", us.executeUpdate(i, hm, name));
 		} else if (cmd.equals("delete")) {
 			int i = 2;
 			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
 			hm.put("uino", 3);
-			req.setAttribute("delete", us.executeUpdate(i, hm));
+			req.setAttribute("delete", us.executeUpdate(i, hm, name));
 		} else if (cmd.equals("update")) {
 			int i = 3;
 			LinkedHashMap<String, Object> hm = new LinkedHashMap<String, Object>();
 			hm.put("address", "부산");
 			hm.put("uino", 5);
-			req.setAttribute("update", us.executeUpdate(i, hm));
+			req.setAttribute("update", us.executeUpdate(i, hm, name));
 		} else {
 			cmd = "/WEB-INF/view/common/error";
 		}

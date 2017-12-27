@@ -16,36 +16,36 @@ import com.test.iot.dao.UserDAO;
 public class UserDAOImpl implements UserDAO {
 	PreparedStatement ps;
 	ResultSet rs;
-	
+
 	@Override
-	public ArrayList<HashMap<String, Object>> selectUserList() {
+	public ArrayList<HashMap<String, Object>> selectUserList(String sql) {
 		ps = null;
 		rs = null;
 		ArrayList<HashMap<String, Object>> userList = new ArrayList<HashMap<String, Object>>();
-		String sql = "select * from user_info";
 
 		try {
 			ps = DBCon.getCon().prepareStatement(sql);
 			rs = ps.executeQuery();
-			userList=parseResultSet(rs);//ResultSet userList에 적용
+			userList = parseResultSet(rs);// ResultSet userList에 적용
+			DBCon.closeCon();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return userList;
 	}
-	
-	public ArrayList<HashMap<String, Object>> parseResultSet(ResultSet set){ // 유저 키값에 맞춰서 데이터 넣는용도
-		ArrayList<HashMap<String, Object>> userList=new ArrayList<HashMap<String, Object>>();
+
+	public ArrayList<HashMap<String, Object>> parseResultSet(ResultSet set) { // 유저 키값에 맞춰서 데이터 넣는용도
+		ArrayList<HashMap<String, Object>> userList = new ArrayList<HashMap<String, Object>>();
 		ResultSetMetaData rsmd;
 		try {
 			rsmd = set.getMetaData();
-			String[] colNames=new String[rsmd.getColumnCount()];
-			for(int i=0;i<colNames.length;i++) {
-				colNames[i]=rsmd.getColumnLabel(i+1);
+			String[] colNames = new String[rsmd.getColumnCount()];
+			for (int i = 0; i < colNames.length; i++) {
+				colNames[i] = rsmd.getColumnLabel(i + 1);
 			}
-			while(set.next()) {
-				HashMap<String, Object> hm=new HashMap<String, Object>();
-				for(String colName:colNames) {
+			while (set.next()) {
+				HashMap<String, Object> hm = new HashMap<String, Object>();
+				for (String colName : colNames) {
 					hm.put(colName, set.getString(colName));
 				}
 				userList.add(hm);
@@ -55,17 +55,17 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userList;
 	}
-	
-	public void setParameter(LinkedHashMap<String,Object> hm) throws SQLException {
-		if(hm!=null) {
+
+	public void setParameter(LinkedHashMap<String, Object> hm) throws SQLException {
+		if (hm != null) {
 			Iterator<String> it = hm.keySet().iterator();
 			int idx = 1;
-			while(it.hasNext()) {
+			while (it.hasNext()) {
 				String key = it.next();
 				ps.setObject(idx++, hm.get(key));
 			}
 		}
-    }
+	}
 
 	@Override
 	public HashMap<String, Object> selectUser() {
@@ -74,12 +74,12 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int executeUpdate(String sql, LinkedHashMap<String, Object> hm) {
-		Connection con=DBCon.getCon();
-		int result =0;
+		Connection con = DBCon.getCon();
+		int result = 0;
 		try {
-			ps=con.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			setParameter(hm);
-			result=ps.executeUpdate();
+			result = ps.executeUpdate();
 			con.commit();
 		} catch (SQLException e) {
 			try {
@@ -89,13 +89,13 @@ public class UserDAOImpl implements UserDAO {
 			}
 			e.printStackTrace();
 		}
-		con=null;
+		con = null;
 		return result;
 	}
 
 	@Override
 	public int executeUpdate(String sql) {
-		return executeUpdate(sql,null);
+		return executeUpdate(sql, null);
 	}
-	
+
 }

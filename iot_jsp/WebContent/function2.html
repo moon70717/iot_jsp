@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+
+var func= function(num1, num2, op){
+	var add=function(){
+		return num1+num2;
+	}
+	var mutilple=function(){
+		return num1*num2;
+	}
+	this.cal=function(){
+		if(op=="+"){
+			return add();
+		}else if(op=="*"){
+			return mutilple();
+		}
+	}
+}
+
+var f=new func(3,5,"+");
+
+alert(f.cal());
+alert(new func(6,5,"+").cal());
+</script>
+</body>
+</html>

@@ -11,7 +11,6 @@ import javax.sql.DataSource;
 public class DBCon {
 
 	private static Connection conn;
-
 	public static Connection getCon() {
 		if (DBCon.conn == null) {
 			Context initContext;
@@ -19,6 +18,7 @@ public class DBCon {
 				initContext = new InitialContext();
 				Context envContext = (Context) initContext.lookup("java:/comp/env");
 				DataSource ds = (DataSource) envContext.lookup("jdbc/IOT");
+				System.out.print(ds);
 				DBCon.conn = ds.getConnection();
 			} catch (NamingException | SQLException e) {
 				e.printStackTrace();

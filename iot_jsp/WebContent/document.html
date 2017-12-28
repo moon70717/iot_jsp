@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#result_div{
+background-color:red;
+}
+</style>
+</head>
+<script>
+function readText(){
+	var ipObj=document.getElementById("ip1");
+	document.getElementById("result_div").innerHTML+=ipObj.value;
+	
+}
+</script>
+<body>
+<div id="result_div">1</div>
+<input type="text" id="ip1" placeholder="이거슨 힌트이고요"/>
+<input type="button" value="readText" onclick="readText()"/>
+</body>
+</html>

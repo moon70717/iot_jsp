@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="button"  value="클릭" onclick="hi()"/>
+<input type="button" value="자식창" onclick="openChildWindow()"/>
+<button onclick="hi()">
+	버튼
+</button>
+<script>
+	function openChildWindow(){
+		window.open("/test.html");
+	}
+
+	var cnt=1;
+	var hi=function(){
+		alert(cnt++);
+	}
+</script>
+</body>
+</html>

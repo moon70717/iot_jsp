@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+	var calObj = function(ids) {
+		var num1, num2, op;
+		var getValue = function(id) {
+			return document.getElementById(id).value;
+		}
+
+		var setValue = function() {
+			num1 = parseInt(getValue(ids["num1"]));
+			num2 = parseInt(getValue(ids["num2"]));
+			op = getValue(ids["op"]);
+		}
+
+		var add = function() {
+			return num1 + num2;
+		}
+		var minus = function() {
+			return num1 - num2;
+		}
+		var multiple = function() {
+			return num1 * num2;
+		}
+		var divid = function() {
+			return num1 / num2;
+		}
+		this.cal=function()
+		{
+			if (op == "+") {
+				return add();
+			} else if (op == "-") {
+				return minus();
+			} else if (op == "*") {
+				return multiple();
+			} else if (op == "/") {
+				return divid();
+			}
+		}
+		setValue();
+	}
+
+	function cal() {
+
+		var param = {
+			num1 : "num1",
+			num2 : "num2",
+			op : "op"
+		};
+		var co = new calObj(param);
+		document.getElementById("result").value = co.cal();
+	}
+</script>
+<body>
+	<input type="text" id="num1" />
+	<select id="op">
+		<option value="+">더하기</option>
+		<option value="-">빼기</option>
+		<option value="*">곱하기</option>
+		<option value="/">나누기</option>
+	</select>
+	<input type="text" id="num2" />=
+	<input type="text" id="result" />
+	<br>
+	<input type="button" value="계산" onclick="cal()" />
+</body>
+</html>

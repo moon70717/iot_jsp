@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style>
+        * {
+            left: 10px
+        }
+
+    </style>
+</head>
+<script>
+    var rNum = Math.floor(Math.random() * 9) + 1;
+    alert(rNum);
+
+    function run() { 
+        var str = "";
+        for (var i = 1; i < 10; i++) {
+            str += "<input type='button' id='" + i + "' value='" + i +
+                "' onclick='boom(this.id)'/>";
+            if (i % 3 == 0) {
+                str += "<br>";
+            }
+        }
+        document.getElementById("result").innerHTML = str;
+    }
+
+    function boom(num) {
+        if (rNum == num) {
+            alert(num + "에서 터짐");
+        }
+    }
+
+</script>
+
+<body onload="run()" id="result">
+</body>
+</html>

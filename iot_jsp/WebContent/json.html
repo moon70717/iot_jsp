@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function ff(){
+            myObj = {
+            "name": "John",
+            "age": 30,
+            "car": null
+        };
+        for (x in myObj) {
+            document.getElementById("demo").innerHTML += x+"<br>";
+        }
+        document.getElementById("demo").innerHTML += myObj[1]+"<br>";
+        }
+
+    </script>
+</head>
+
+<body onload="ff()">
+<div id="demo"></div>
+
+</body>
+
+</html>

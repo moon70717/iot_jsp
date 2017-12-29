@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script src="/js/test.js"></script>
+<script src="/js/jquery-3.2.1.js"></script>
+<link rel="stylesheet" href="">
+<script>
+    function checkValue(fObj) {
+        var objs=$("input[data-val]");
+        for(var obj of objs){
+            var len=parseInt(obj.getAttribute("data-val"));
+            var value=obj.value.trim();
+            if(value.length<len){
+                alert(obj.getAttribute("data-msg"))
+                obj.value="";
+                obj.focus();
+                return false;
+            }
+            
+        }
+        return true;
+    }
+
+</script>
+
+<body>
+    <!--form태그의 디폴트값은 get  action의 주소값을 입력하지않으면 자신에게 돌려줌-->
+    <form class="form" action="./location.html" onsubmit="return checkValue(this)">
+        <h2 id="hText">로그인</h2>
+        id: <input type="text" name="user_id" id="userId" data-val="5" data-msg="id없음"><br> pwd: <input type="password" name="user_pwd" , id="userPwd" data-val="5" data-msg="pwd없음"><br>
+        <input type="submit" value="로그인" id="loginBtn">
+    </form>
+</body>
+
+</html>

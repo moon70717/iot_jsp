@@ -29,9 +29,10 @@
 
 <body>
     <!--form태그의 디폴트값은 get  action의 주소값을 입력하지않으면 자신에게 돌려줌-->
-    <form class="form" action="./location.html" onsubmit="return checkValue(this)">
+    <form class="form" action="./login_ok.jsp" onsubmit="return checkValue(this)">
         <h2 id="hText">로그인</h2>
-        id: <input type="text" name="user_id" id="userId" data-val="5" data-msg="id없음"><br> pwd: <input type="password" name="user_pwd" , id="userPwd" data-val="5" data-msg="pwd없음"><br>
+        id: <input type="text" name="user_id" id="userId" data-val="2" data-msg="id없음" placeholder="id"><br> pwd: 
+        <input type="password" name="user_pwd" , id="userPwd" data-val="2" data-msg="pwd없음" placeholder="password"><br>
         <input type="submit" value="로그인" id="loginBtn">
     </form>
 </body>

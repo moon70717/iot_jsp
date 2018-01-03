@@ -23,6 +23,9 @@
 		<servlet-name>UserServlet</servlet-name>
 		<url-pattern>/user/*</url-pattern>
 	</servlet-mapping>
+	
+	
+	
 	<servlet>
 		<servlet-name>ClassServlet</servlet-name>
 		<servlet-class>com.test.iot.servlet.ClassServlet</servlet-class>

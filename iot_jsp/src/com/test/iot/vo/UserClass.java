@@ -12,10 +12,11 @@ public class UserClass {
 	private String uiPwd;
 	private String uiRegdate;
 	private String address;
+	
 	public int getCiNo() {
 		return ciNo;
 	}
-	public void setCino(int ciNo) {
+	public void setCiNo(int ciNo) {
 		this.ciNo = ciNo;
 	}
 	public String getCiName() {

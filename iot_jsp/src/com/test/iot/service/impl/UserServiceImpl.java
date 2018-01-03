@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public ArrayList<HashMap<String, Object>> getUser(int i, String name) {
-		String sql="select * from "+name+"_info where uino="+i;
+	public ArrayList<HashMap<String, Object>> getUser(int i, String id, String pwd) {
+		String sql="select * from user_info where uiid="+id+" and uipass="+pwd;
 		ArrayList<HashMap<String, Object>> userList = ud.selectUserList(sql);
 		return userList;
 	}

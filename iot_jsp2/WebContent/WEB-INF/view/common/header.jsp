@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/view/common/common.jsp"%>
+    <%@ include file="/WEB-INF/view/common/common.jsp"%>
 <%
 	String loginMenu = "Login";
 	String loginUrl = rootPath + "/view/user/login";
-	if (userId != null) {
+	/* if (user != null) {
 		loginMenu="logout";
 		loginUrl=rootPath+"/user/logout";
-	}
+	} */
 %>
-
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -24,9 +23,9 @@
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="<%=rootPath%>/view/index">Home</a></li>
-				<li><a href="<%=loginUrl%>"><%=loginMenu%></a></li>
-				<li><a href="#contact">Contact</a></li>
+				<li id="nav_li_1" class="active"><a href="<%=rootPath%>/view/index">Home</a></li>
+				<li id="nav_li_2"><a href="<%=loginUrl%>"><%=loginMenu%></a></li>
+				<li id="nav_li_3" style="float: left"><a href="#Content">signin</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

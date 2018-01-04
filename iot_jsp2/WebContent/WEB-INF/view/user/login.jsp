@@ -22,22 +22,27 @@
                     $("#userPwd").focus();
                     return;
                 }
+                var param = {
+                    uiId: userId,
+                    uiPwd: userPwd
+                };
+                param = "param=" + encodeURIComponent(JSON.stringify(param));
                 $.ajax({
-                    url: '<%=rootPath%>/user/login',
-                    data: 'userId=' + userId + "&userPwd=" + userPwd,
+                	url:"<%=rootPath%>/user/login",
+                    data: param,
                     type: 'get',
                     success: function(res) {
                         var obj = JSON.parse(res);
                         alert(obj.msg);
                         if (obj.login == "ok") {
-                            location.href = "<%=rootPath%>/";
+                            location.href = "/";
                         }
                     }
                 });
             }
             $(function() {
                 $(".starter-template").keydown(function(event) {
-                    if(event.keyCode==13){
+                    if (event.keyCode == 13) {
                         checkValue();
                     }
                 });
@@ -53,10 +58,11 @@
                     <form class="form-signin">
                         <h2 id="hText2" class="form-signin-heading">로그인</h2>
 
-                        <label for="inputEmail" class="sr-only">ID</label> <input type="text" id="userId" name="userId" class="form-control" placeholder="ID" autofocus> <label for="inputPassword" class="sr-only">Password</label> <input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="Password"> <input class="btn btn-lg btn-primary btn-block" type="button" id="loginBtn" value="Login" onclick="checkValue()">
+                        <label for="inputEmail" class="sr-only">ID</label> <input type="text" id="userId" name="userId" class="form-control" placeholder="ID" value="hong" autofocus> <label for="inputPassword" class="sr-only">Password</label> <input type="password" id="userPwd" name="userPwd" class="form-control" placeholder="Password" value="hongP"> <input class="btn btn-lg btn-primary btn-block" type="button" id="loginBtn" value="Login" onclick="checkValue()">
                     </form>
                 </div>
-            </div>
+            </div> 
+            <a href="<%=rootPath%>/view/user/signin">회원가입</a>
         </body>
 
         </html>

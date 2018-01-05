@@ -13,6 +13,7 @@ if(user!=null){
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/common.css">
+<link rel="stylesheet" href="<%=rootPath%>/ui/css/style.css">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -24,7 +25,7 @@ if(user!=null){
           </button>
           <a class="navbar-brand" href="#">Project name</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse left-header">
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=rootPath%>/">Home</a></li>
             <li><a href="<%=loginUrl%>"><%=loginMenu%></a></li>

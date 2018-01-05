@@ -1,4 +1,17 @@
 #nav_li_3 {
-    float: right;
-    
+	float: right;
+}
+
+.goSign {
+	text-decoration: none;
+}
+.login-mini-btn {
+    width: 30%;
+    text-align: center;
+    margin: auto;
+}
+
+#buttton {
+    max-width: 330px;
+    margin: auto;
 }

@@ -8,7 +8,8 @@ if(user==null){
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>IOT_TEST</title>
-</head>
+</head>  
+
 <body>
 	<jsp:include page="/WEB-INF/view/common/header.jsp" flush="false" />
     <div class="container">

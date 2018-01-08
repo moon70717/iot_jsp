@@ -155,3 +155,6 @@ back {
 #grid1 input[type=text]{
 	width:auto;
 }
+#nav {
+    position: fixed;
+}

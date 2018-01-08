@@ -17,7 +17,7 @@ if(user!=null){
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/style2.css">
 <style>
     </style>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">

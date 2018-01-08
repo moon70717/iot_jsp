@@ -14,7 +14,9 @@ if(user!=null){
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/common.css">
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/style.css">
-
+<link rel="stylesheet" href="<%=rootPath%>/ui/css/style2.css">
+<style>
+    </style>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -28,7 +30,7 @@ if(user!=null){
         </div>
         <div id="navbar" class="collapse navbar-collapse left-header">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<%=rootPath%>/">Home</a></li>
+            <li class="active_old"><a href="<%=rootPath%>/">Home</a></li>
             <li><a href="<%=loginUrl%>"><%=loginMenu%></a></li>
             <li><a href="<%=rootPath%>/view/user/list">User List</a></li>
           </ul>

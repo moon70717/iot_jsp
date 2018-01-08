@@ -17,7 +17,7 @@
                     <form>
                         <input type="text" id="userId" name="userId" placeholder="UserId">
                         <input type="password" id="userPwd" name="userPwd" placeholder="Password">
-                        <input type="submit" id="loginBtn" class="login login-submit" value="login" onclick="checkValue()">
+                        <input type="button" id="loginBtn" class="login login-submit" value="login" onclick="checkValue()">
                     </form>
 
                     <div class="login-help">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
         </div>
-    </body>
+    </body> 
     <script>
         function checkValue() {
             var objs = $(".container");

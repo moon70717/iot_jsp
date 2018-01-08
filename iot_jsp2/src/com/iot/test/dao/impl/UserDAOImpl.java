@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.iot.test.dao.UserDAO;
+import com.iot.test.utils.DBUtil;
 import com.iot.test.vo.UserClass;
 
 import common.DBCon;
@@ -23,7 +24,7 @@ public class UserDAOImpl implements UserDAO {
 		ps = null;
 		rs = null;
 		try {
-			String sql="select * from user_info ui,class_info ci where ui.cino=ci.cino";
+			String sql = "select *, date_format(uiregdate, '%Y-%m-%d') as rdate from user_info ui,class_info ci where ui.cino=ci.cino";
 			con = DBCon.getCon();
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -38,11 +39,16 @@ public class UserDAOImpl implements UserDAO {
 				uc.setUiName(rs.getString("uiName"));
 				uc.setUiNo(rs.getInt("uino"));
 				uc.setUiPwd(rs.getString("uipwd"));
-				uc.setUiRegdate(rs.getString("UiRegdate"));
+				uc.setUiRegdate(rs.getString("rdate"));
 				userList.add(uc);
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs);
+			DBUtil.close(con);
+			DBUtil.close(ps);
 		}
 		return userList;
 	}
@@ -76,10 +82,15 @@ public class UserDAOImpl implements UserDAO {
 				uc.setUiNo(rs.getInt("uino"));
 				uc.setUiPwd(rs.getString("uipwd"));
 				uc.setUiRegdate(rs.getString("UiRegdate"));
+
 				return uc;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBUtil.close(rs);
+			DBUtil.close(con);
+			DBUtil.close(ps);
 		}
 		return null;
 	}
@@ -102,9 +113,13 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(6, uc.getAddress());
 			int i = ps.executeUpdate();
 			System.out.println("result=" + i);
+
 			return i;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
 		}
 
 		return 0;
@@ -112,13 +127,52 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public int updateUser(UserClass uc) {
+		con = null;
+		ps = null;
+		rs = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "update user_info set uiName=?,uiAge=?,address=? where uiNo=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, uc.getUiName());
+			ps.setInt(2, uc.getUiAge());
+			ps.setString(3, uc.getAddress());
+			ps.setInt(4, uc.getUiNo());
+			System.out.print(ps);
+			int i = ps.executeUpdate();
+			System.out.println("result=" + i);
+
+			return i;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+		}
 
 		return 0;
 	}
 
 	@Override
 	public int deleteUser(UserClass uc) {
+		con = null;
+		ps = null;
+		rs = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "delete from user_info where uiNo=?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, uc.getUiNo());
+			int i = ps.executeUpdate();
+			System.out.println("result=" + i);
 
+			return i;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+		}
 		return 0;
 	}
 }

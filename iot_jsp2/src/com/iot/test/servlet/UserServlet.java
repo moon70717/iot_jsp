@@ -47,6 +47,7 @@ public class UserServlet extends HttpServlet {
 		res.setContentType("text/html;charset=utf-8");
 		PrintWriter out=res.getWriter();
 		String uri = (String) req.getRequestURI();
+		System.out.println("user servlet");
 		String cmd = getCommand(uri);
 		System.out.println("cmd now : " + cmd);
 		if (cmd.equals("login")) {
@@ -62,11 +63,12 @@ public class UserServlet extends HttpServlet {
 			out.print(req.getAttribute("resStr"));
 		} else if(cmd.equals("list")) {
 			ArrayList<UserClass> userList=us.getUserList();
-			/*List<ClassInfo> classList=cs.getClassList();
-			HashMap<String,List> hm=new HashMap<String,List>();
-			hm.put("ul",userList);
-			hm.put("cl", classList);*/
 			out.print(gs.toJson(userList));
+		} else if(cmd.equals("delete")) {
+			out.println(us.deleteUser(req));
+		} else if(cmd.equals("update")) {
+			System.out.println("update from servlet");
+			out.println(us.updateUser(req));
 		}
 	}
 }

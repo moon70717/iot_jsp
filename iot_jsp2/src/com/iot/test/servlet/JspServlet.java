@@ -35,6 +35,7 @@ public class JspServlet extends HttpServlet {
 		res.setContentType("text/html;charset=utf-8");
 		PrintWriter out=res.getWriter();
 		String uri = req.getRequestURI();
+		System.out.println("jsp servlet");
 		uri = "/WEB-INF" + uri + ".jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(uri);
 		rd.forward(req, res);

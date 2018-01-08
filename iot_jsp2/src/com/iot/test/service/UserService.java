@@ -16,4 +16,8 @@ public interface UserService {
 	public void logout(HttpServletRequest req);
 
 	public void signin(HttpServletRequest req);
+	
+	public String deleteUser(HttpServletRequest req);
+	
+	public String updateUser(HttpServletRequest req);
 }

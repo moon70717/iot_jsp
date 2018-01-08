@@ -23,7 +23,7 @@
 					placeholder="UserPassword"> <select name="ciNo" id="ciNo">
 					<option value='example'>---select class---</option>
 				</select> <input type="text" id="address" name="address"
-					placeholder="address"> <input type="submit"
+					placeholder="address"> <input type="button"
 					class="login login-submit" id="singnBtn" value="Signin"
 					onclick="signin()">
 			</form>

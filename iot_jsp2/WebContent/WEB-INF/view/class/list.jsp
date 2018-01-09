@@ -1,90 +1,88 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <html>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<link rel="stylesheet" href="<%=rootPath%>/ui/css/list.css" />
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <link rel="stylesheet" href="<%=rootPath%>/ui/css/list.css" />
 
-<body>
-	<jsp:include page="/WEB-INF/view/common/header.jspf" flush="false" />
-	<br>
-	<style>
-#table {
-	margin-top: 100px;
-}
-</style>
-	<div class="container">
-		<div id="table" class="table-editable">
-			<div class="col col-xs-6">
-				<h3 class="panel-title">Class List</h3>
-			</div>
-			<div class="col col-xs-6 text-right">
-				<input type="text" class="input">
-				<button type="button" class="btn btn-sm btn-primary btn-create">검색</button>
-			</div>
-			<table id="grid1" data-key="ciNo" class="table">
-				<thead>
-					<tr>
-						<th class="text-center" data-field="ciNo,ro">번호</th>
-						<th class="text-center" data-field="ciName,txt">이름</th>
-						<th class="text-center" data-field="ciDesc,txt">설명</th>
-						<th class="text-center" data-field="BTN"><em
-							class="glyphicon glyphicon-asterisk"></em></th>
-					</tr>
-				</thead>
-				<tbody id="result_tb">
-				</tbody>
-				<tr>
-				<tr>
-					<!-- insert 받는부분 -->
-					<th contenteditable="false">반 추가</th>
-					<th contenteditable="true" placeholder="이름을 입력하세요"
-						id="insertCiName"></th>
-					<th contenteditable="true" placeholder="설명을 입력하세요"
-						id="insertCiDesc"></th>
-					<th><a class="btn btn-default" onclick="insert()"><em
+    <body>
+        <jsp:include page="/WEB-INF/view/common/header.jspf" flush="false" />
+        <br>
+        <style>
+            #table {
+                margin-top: 100px;
+            }
+
+        </style>
+        <div class="container">
+            <div id="table" class="table-editable">
+                <div class="col col-xs-6">
+                    <h3 class="panel-title">Class List</h3>
+                </div>
+                <div class="col col-xs-6 text-right">
+                    <input type="text" class="input">
+                    <button type="button" class="btn btn-sm btn-primary btn-create">검색</button>
+                </div>
+                <table id="grid1" data-key="ciNo" class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center" data-field="ciNo,ro">번호</th>
+                            <th class="text-center" data-field="ciName,txt">이름</th>
+                            <th class="text-center" data-field="ciDesc,txt">설명</th>
+                            <th class="text-center" data-field="BTN"><em class="glyphicon glyphicon-asterisk"></em></th>
+                        </tr>
+                    </thead>
+                    <tbody id="result_tb">
+                    </tbody>
+                    <tr>
+                        <tr>
+                            <!-- insert 받는부분 -->
+                            <th contenteditable="false">반 추가</th>
+                            <th contenteditable="true" placeholder="이름을 입력하세요" id="insertCiName"></th>
+                            <th contenteditable="true" placeholder="설명을 입력하세요" id="insertCiDesc"></th>
+                            <th><a class="btn btn-success" onclick="insert()"><em
 							class="glyphicon glyphicon-plus"></em> </a></th>
-				</tr>
-			</table>
+                        </tr>
+                </table>
 
-		</div>
-	</div>
-</body>
-<script>
+            </div>
+        </div>
+    </body>
+    <script>
         function insert() {
-        	var ciName = $("#insertCiName").text().trim();
+            var ciName = $("#insertCiName").text().trim();
             var ciDesc = $("#insertCiDesc").text().trim();
-            if(ciName!=null){
-            	if(ciDesc!=null){
-            		var param = {
-                            ciName: ciName,
-                            ciDesc: ciDesc
-                        };
-                        param = "param=" + JSON.stringify(param);
-                            $.ajax({
-                                url: '/class/insert',
-                                data: param,
-                                dataType: 'json',
-                                type: 'post',
-                                success: function(res) {
-                                    alert(res.msg);
-                                    if (res.result == 'ok') {
-                                        location.reload();
-                                    }
-                                },
-                                error: function(xhr, status, error) {
-                                    alert("error");
-                                }
-                            });
-            	}else{
-            		alert("설명을 추가하세요");
-            	}
-            }else{
-            	alert("이름을 추가하세요");
+            if (ciName != null) {
+                if (ciDesc != null) {
+                    var param = {
+                        ciName: ciName,
+                        ciDesc: ciDesc
+                    };
+                    param = "param=" + JSON.stringify(param);
+                    $.ajax({
+                        url: '/class/insert',
+                        data: param,
+                        dataType: 'json',
+                        type: 'post',
+                        success: function(res) {
+                            alert(res.msg);
+                            if (res.result == 'ok') {
+                                location.reload();
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            alert("error");
+                        }
+                    });
+                } else {
+                    alert("설명을 추가하세요");
+                }
+            } else {
+                alert("이름을 추가하세요");
             }
         }
 
@@ -195,4 +193,4 @@
 
     </script>
 
-</html>
+    </html>

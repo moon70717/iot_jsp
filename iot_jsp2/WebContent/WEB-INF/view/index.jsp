@@ -22,9 +22,13 @@ if(user==null){
  		<div class="video-background">
 
     <div class="video-foreground">
-
+      <iframe src="https://www.youtube.com/embed/XGGooAlUAyg?controls=0&showinfo=0&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
+      
+      <!-- 그전영상(비오는거)
       <iframe src="https://www.youtube.com/embed/ZoGV8pAQICc?controls=0&showinfo=0&autoplay=1&loop=1" frameborder="0" allowfullscreen></iframe>
-
+		https://www.youtube.com/embed/XGGooAlUAyg 경복궁
+		
+		-->
     </div>
 
   </div>

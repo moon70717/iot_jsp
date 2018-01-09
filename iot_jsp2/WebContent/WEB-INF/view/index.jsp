@@ -15,7 +15,6 @@ if(user==null){
 
       <div class="starter-template">
         <h1 id="welcome_msg"><%=user.getUiName()%>님 환영합니다.</h1>
-        <!-- <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p> -->
       </div>
     </div><!-- /.container -->
  	<back>

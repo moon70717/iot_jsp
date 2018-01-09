@@ -50,10 +50,9 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public void signin(HttpServletRequest req) {
-		String json=req.getParameter("param");
-		UserClass uc=gs.fromJson(json, UserClass.class); 
-		System.out.println("cmd uiname: "+uc.getUiName());
+	public String signin(HttpServletRequest req) {
+		String param=req.getParameter("param");
+		UserClass uc=gs.fromJson(param, UserClass.class);
 		int result=ud.insertUser(uc);
 		HashMap<String,String> rm= new HashMap<String,String>();
 		rm.put("result", "no");
@@ -62,7 +61,9 @@ public class UserServiceImp implements UserService {
 			rm.put("result", "ok");
 			rm.put("msg", "성공했습니다");
 		}
-		req.setAttribute("resStr", gs.toJson(rm));
+		
+		return gs.toJson(rm);
+		/*req.setAttribute("resStr", gs.toJson(rm));*/
 	}
 
 	@Override

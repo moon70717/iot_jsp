@@ -47,15 +47,15 @@
                 ciNo: ciNo,
                 address: address
             };
-            param = "param=" + JSON.stringify(param);
+            param="param="+ encodeURIComponent(JSON.stringify(param));
             $.ajax({
-                url: '/user/signin',
-                type: 'post',
+                url: '/user/signin',                
                 data: param,
+                type: 'get',
                 success: function(res) {
-                    var obj = JSON.parse(res);
-                    alert(obj.msg);
-                    if (obj.result == "ok") {
+                	res = JSON.parse(res);
+                    alert(res.msg);
+                    if (res.result == "ok") {
                         location.href = "/view/user/login";
                     }
                 },

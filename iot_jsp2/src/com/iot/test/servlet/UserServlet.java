@@ -56,9 +56,8 @@ public class UserServlet extends HttpServlet {
 			RequestDispatcher rd=req.getRequestDispatcher("/view/user/login");
 			rd.forward(req, res);
 		} else if(cmd.equals("signin")) {
-			System.out.print("출발합니다 "+req.getParameter("param"));
-			us.signin(req);
-			out.print(req.getAttribute("resStr"));
+			System.out.println("출발합니다 "+req.getParameter("param"));
+			out.print(us.signin(req));
 		} else if(cmd.equals("list")) {
 			ArrayList<UserClass> userList=us.getUserList();
 			out.print(gs.toJson(userList));

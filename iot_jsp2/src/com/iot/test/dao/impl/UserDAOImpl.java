@@ -102,8 +102,8 @@ public class UserDAOImpl implements UserDAO {
 		rs = null;
 		try {
 			con = DBCon.getCon();
-			String sql = "insert into user_info(uiname,uiage,uiid,uipwd,cino,uiregdate,address)\r\n"
-					+ "values(?,?,?,?,?,now(),?)";
+			String sql = "insert into user_info(uiName,uiAge,uiId,uiPwd,ciNo,"
+					+ "uiRegdate,address)values(?,?,?,?,?,now(),?)";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, uc.getUiName());
 			ps.setInt(2, uc.getUiAge());
@@ -111,34 +111,6 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(4, uc.getUiPwd());
 			ps.setInt(5, uc.getCiNo());
 			ps.setString(6, uc.getAddress());
-			int i = ps.executeUpdate();
-			System.out.println("result=" + i);
-
-			return i;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(con);
-			DBUtil.close(ps);
-		}
-
-		return 0;
-	}
-
-	@Override
-	public int updateUser(UserClass uc) {
-		con = null;
-		ps = null;
-		rs = null;
-		try {
-			con = DBCon.getCon();
-			String sql = "update user_info set uiName=?,uiAge=?,address=? where uiNo=?";
-			ps = con.prepareStatement(sql);
-			ps.setString(1, uc.getUiName());
-			ps.setInt(2, uc.getUiAge());
-			ps.setString(3, uc.getAddress());
-			ps.setInt(4, uc.getUiNo());
-			System.out.print(ps);
 			int i = ps.executeUpdate();
 			System.out.println("result=" + i);
 
@@ -173,6 +145,34 @@ public class UserDAOImpl implements UserDAO {
 			DBUtil.close(con);
 			DBUtil.close(ps);
 		}
+		return 0;
+	}
+	
+	@Override
+	public int updateUser(UserClass uc) {
+		con = null;
+		ps = null;
+		rs = null;
+		try {
+			con = DBCon.getCon();
+			String sql = "update user_info set uiName=?,uiAge=?,address=? where uiNo=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, uc.getUiName());
+			ps.setInt(2, uc.getUiAge());
+			ps.setString(3, uc.getAddress());
+			ps.setInt(4, uc.getUiNo());
+			System.out.print(ps);
+			int i = ps.executeUpdate();
+			System.out.println("result=" + i);
+
+			return i;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(con);
+			DBUtil.close(ps);
+		}
+
 		return 0;
 	}
 }

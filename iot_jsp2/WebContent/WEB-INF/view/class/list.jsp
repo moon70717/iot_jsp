@@ -56,8 +56,8 @@
         function insert() {
             var ciName = $("#insertCiName").text().trim();
             var ciDesc = $("#insertCiDesc").text().trim();
-            if (ciName != null) {
-                if (ciDesc != null) {
+            if (ciName != "") {
+                if (ciDesc != "") {
                     var param = {
                         ciName: ciName,
                         ciDesc: ciDesc

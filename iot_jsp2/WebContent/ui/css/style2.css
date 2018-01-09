@@ -158,3 +158,28 @@ back {
 #nav {
     position: fixed;
 }
+
+.table th,.table td{
+  text-align:center;
+}
+.table-editable {
+  position: relative;
+  
+  .glyphicon {
+    font-size: 20px;
+    margin-right:10px;
+  }
+}
+
+.btn{
+	margin-right: 5px;
+    margin-left: 5px;
+}
+#result_tb tr:nth-child(2n) {
+  background-color: #eaeaea;
+}
+
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  
+}

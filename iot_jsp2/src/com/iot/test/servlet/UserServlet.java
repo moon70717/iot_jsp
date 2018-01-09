@@ -42,9 +42,7 @@ public class UserServlet extends HttpServlet {
 	}
 
 	public void doProcess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		req.setCharacterEncoding("utf-8");
-		res.setCharacterEncoding("utf-8");
-		res.setContentType("text/html;charset=utf-8");
+		System.out.print("encode: "+ req.getCharacterEncoding());
 		PrintWriter out=res.getWriter();
 		String uri = (String) req.getRequestURI();
 		System.out.println("user servlet");

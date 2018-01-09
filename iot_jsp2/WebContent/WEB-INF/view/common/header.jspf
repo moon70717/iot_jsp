@@ -30,7 +30,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="<%=rootPath%>/">Project</a>
+			<a class="navbar-brand" href="<%=rootPath%>/">IOT_JSP</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse left-header">
 			<ul class="nav navbar-nav">

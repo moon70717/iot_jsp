@@ -20,7 +20,7 @@
 		$("li a[href='<%=uri%>']").parent().attr("class","active");
 	});
 </script>
-<nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
+<%-- <nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -42,4 +42,25 @@
 		</div>
 		<!--/.nav-collapse -->
 	</div>
-</nav>
+</nav> --%>
+
+<header class="cd-auto-hide-header">
+	<div class="logo"><a href="<%=rootPath%>/""><h2>IOT_JSP</h2></a></div>
+
+	<nav class="cd-primary-nav">
+		<a href="#cd-navigation" class="nav-trigger">
+			<span>
+				<em aria-hidden="true"></em>
+				Menu
+			</span>
+		</a> <!-- .nav-trigger -->
+
+		<ul id="cd-navigation">
+			<li><a href="<%=rootPath%>/"">Home</a></li>
+			<li><a href="<%=loginUrl%>"><%=loginMenu%></a></li>
+			<li><a href="<%=rootPath%>/view/user/list">User List</a></li>
+			<li><a href="<%=rootPath%>/view/class/list">Class List</a></li>
+		</ul>
+	</nav> <!-- .cd-primary-nav -->
+</header>
+

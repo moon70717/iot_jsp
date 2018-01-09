@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="<%=rootPath%>/ui/css/list.css" />
 
 <body>
-	<jsp:include page="/WEB-INF/view/common/header.jsp" flush="false" />
+	<jsp:include page="/WEB-INF/view/common/header.jspf" flush="false" />
 	<br>
 	<style>
 .row {

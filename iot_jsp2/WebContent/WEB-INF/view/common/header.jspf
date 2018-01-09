@@ -1,0 +1,45 @@
+<%@page import="com.iot.test.vo.UserClass"%>
+<%
+	String rootPath = request.getContextPath();
+	UserClass user = (UserClass) session.getAttribute("user");
+	String loginMenu = "Login";
+	String loginUrl = rootPath + "/view/user/login";
+	String act = "home";
+	if (user != null) {
+		loginMenu = "Logout";
+		loginUrl = rootPath + "/user/logout";
+	}
+	String uri = request.getRequestURI();
+	int idx = uri.lastIndexOf(".");
+	if (idx !=-1) {
+		uri = uri.substring(8, idx);
+	}
+%>
+<script>
+	$(document).ready(function() {
+		$("li a[href='<%=uri%>']").parent().attr("class","active");
+	});
+</script>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="nav">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="<%=rootPath%>/">Project</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse left-header">
+			<ul class="nav navbar-nav">
+				<li><a href="<%=rootPath%>/">Home</a></li>
+				<li><a href="<%=loginUrl%>"><%=loginMenu%></a></li>
+				<li><a href="<%=rootPath%>/view/user/list">User List</a></li>
+				<li><a href="<%=rootPath%>/view/class/list">Class List</a></li>
+			</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
+</nav>

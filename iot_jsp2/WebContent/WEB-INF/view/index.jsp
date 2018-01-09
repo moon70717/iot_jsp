@@ -10,7 +10,7 @@ if(user==null){
 <title>IOT_TEST</title>
 </head>  
 <body>
-	<jsp:include page="/WEB-INF/view/common/header.jsp" flush="false" />
+	<jsp:include page="/WEB-INF/view/common/header.jspf" flush="false" />
     <div class="container">
 
       <div class="starter-template">

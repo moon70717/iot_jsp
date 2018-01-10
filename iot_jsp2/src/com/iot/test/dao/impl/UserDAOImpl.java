@@ -6,11 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.iot.test.common.DBCon;
 import com.iot.test.dao.UserDAO;
 import com.iot.test.utils.DBUtil;
 import com.iot.test.vo.UserClass;
-
-import common.DBCon;
 
 public class UserDAOImpl implements UserDAO {
 	Connection con;

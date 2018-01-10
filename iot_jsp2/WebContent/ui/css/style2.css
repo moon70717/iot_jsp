@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
+@charset "UTF-8";
 
 body {
 	/* background: url(https://dl.dropboxusercontent.com/u/23299152/Wallpapers/wallpaper-22705.jpg) no-repeat center center fixed; */
@@ -31,14 +31,14 @@ body {
 	font-size: 2.3em;
 }
 
-.login-card input[type=button], .login-card input[type=submit] {
+.login-card input[type=button], .login-card input[type=submit], .login-card input[type=number] {
 	width: 100%;
 	display: block;
 	margin-bottom: 10px;
 	position: relative;
 }
 
-.login-card input[type=text], input[type=password], .login-card select {
+.login-card input[type=text], input[type=password], .login-card select, .login-card input[type=number] {
 	height: 44px;
 	font-size: 16px;
 	width: 100%;
@@ -183,12 +183,44 @@ text-shadow: -1px 0 #191919, 0 1px #191919, 1px 0 #191919, 0 -1px #191919;
 }
 
 #result_tb tr:nth-child(2n) {
-	background-color: #eaeaea;
+	background-color: #ECF0F1;
 }
 
 [contenteditable=true]:empty:before {
 	content: attr(placeholder);
 }
+
+
+.login-card span{
+	color:gray;
+	width:100%;
+	text-align:center;
+	display: inline-block;
+}
+
+.login-card span>a{
+	user-select:none;
+}
+
+
+/* ------------------------------------------
+
+div input list set
+
+------------------------------------------ */
+.div_input_max{
+	max-width:200px;
+}
+.div_show_max{
+	max-width:110px;
+}
+th.text-center{
+	max-width:200px;
+}
+#grid1{
+	table-layout:fixed;
+}
+
 
 /* ---------------------------------------
 

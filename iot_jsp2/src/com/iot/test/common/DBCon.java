@@ -1,4 +1,4 @@
-package common;
+package com.iot.test.common;
 
 import java.sql.Connection;
 import java.sql.SQLException;

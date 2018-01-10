@@ -12,7 +12,14 @@ public class UserClass {
 	private String uiPwd;
 	private String uiRegdate;
 	private String address;
+	private boolean saveId;
 	
+	public boolean isSaveId() {
+		return saveId;
+	}
+	public void setSaveId(boolean saveId) {
+		this.saveId = saveId;
+	}
 	public int getCiNo() {
 		return ciNo;
 	}

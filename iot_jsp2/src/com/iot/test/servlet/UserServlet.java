@@ -49,7 +49,7 @@ public class UserServlet extends HttpServlet {
 		String cmd = getCommand(uri);
 		System.out.println("cmd now : " + cmd);
 		if (cmd.equals("login")) {
-			HashMap<String, Object> hm = us.login(req);
+			HashMap<String, Object> hm = us.login(req,res);
 			out.print(gs.toJson(hm));
 		} else if(cmd.equals("logout")) {
 			us.logout(req);

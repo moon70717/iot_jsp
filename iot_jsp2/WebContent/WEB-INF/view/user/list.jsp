@@ -24,7 +24,7 @@
 			<div class="col col-xs-6 text-right">
 				<input type="text" class="input" id="search_fiter">
 				<button type="button" class="btn btn-sm btn-primary btn-create"
-					onclick="filter()">검색</button>
+					onclick="filterss()">검색</button>
 			</div>
 			<table id="grid1" data-key="uiNo" class="table">
 				<thead>
@@ -47,17 +47,24 @@
 	</div>
 </body>
 <script>
-        function filter() {
+	var filtesr="";
+	function find(v){
+		return v.indexOf(filtesr)>=0;
+	}
+        function filterss() {
             var input = $("#search_fiter").val();
-            var filter = input.toUpperCase();
+            filtesr = input.toUpperCase();
             var tr = $("#result_tb tr");
+            var end;
             for(var i of tr){
             	var state="none";
             	var td=i.getElementsByTagName("td");
+            	var vvv=[];
             	for(var j of td){
-            		if(j.innerHTML.toUpperCase().indexOf(filter)>-1){
-            			state="";
-            		}
+            		vvv.push(j.innerText);
+            	}
+            	if(vvv.filter(find).length>0){
+            		state="";
             	}
             	i.style.display=state;
             }

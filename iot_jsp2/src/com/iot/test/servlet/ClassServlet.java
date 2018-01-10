@@ -16,7 +16,7 @@ import com.iot.test.vo.ClassInfo;
 
 public class ClassServlet extends HttpServlet {
 	ClassService cs = new ClassServiceImpl();
-	Gson gs = new Gson();
+	Gson gs = new Gson();  
 
 	public String getCommand(String uri) {
 		int idx = uri.lastIndexOf("/");

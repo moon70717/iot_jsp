@@ -58,6 +58,8 @@ public class UserServiceImp implements UserService {
 		return hm;
 	}
 
+	
+	
 	@Override
 	public void logout(HttpServletRequest req) {
 		HttpSession hs = req.getSession();

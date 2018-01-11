@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/view/common/header.jspf=UTF-8
 encoding//WebContent/WEB-INF/view/index.jsp=UTF-8
 encoding//WebContent/WEB-INF/view/user/login.jsp=UTF-8

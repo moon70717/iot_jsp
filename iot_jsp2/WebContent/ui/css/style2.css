@@ -9,7 +9,8 @@ body {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color:#ECF0F1;'
+	background-color: #ECF0F1;
+	'
 	/* background: url(img.jpg) center center fixed no-repeat; */
 }
 
@@ -31,14 +32,16 @@ body {
 	font-size: 2.3em;
 }
 
-.login-card input[type=button], .login-card input[type=submit], .login-card input[type=number] {
+.login-card input[type=button], .login-card input[type=submit],
+	.login-card input[type=number] {
 	width: 100%;
 	display: block;
 	margin-bottom: 10px;
 	position: relative;
 }
 
-.login-card input[type=text], input[type=password], .login-card select, .login-card input[type=number] {
+.login-card input[type=text], input[type=password], .login-card select,
+	.login-card input[type=number] {
 	height: 44px;
 	font-size: 16px;
 	width: 100%;
@@ -113,7 +116,7 @@ body {
 }
 
 back {
-	box-sizing: border-box;
+	/* box-sizing: border-box; */
 }
 
 .video-background {
@@ -151,9 +154,10 @@ back {
 
 #welcome_msg {
 	margin-top: 150px;
-	color:   white;
-font-weight: bold;
-text-shadow: -1px 0 #191919, 0 1px #191919, 1px 0 #191919, 0 -1px #191919;
+	color: white;
+	font-weight: bold;
+	text-shadow: -1px 0 #191919, 0 1px #191919, 1px 0 #191919, 0 -1px
+		#191919;
 }
 
 #grid1 input[type=text] {
@@ -169,8 +173,9 @@ text-shadow: -1px 0 #191919, 0 1px #191919, 1px 0 #191919, 0 -1px #191919;
 
 .table-editable {
 	position: relative;
-	background-color: #ffffff; border-radius : 15px; padding : 20px;
-	glyphicon { font-size : 20px;
+	background-color: #ffffff;
+	border-radius: 15px;
+	padding: 20px; glyphicon { font-size : 20px;
 	margin-right: 10px;
 	border-radius: 15px;
 	padding: 20px;
@@ -190,37 +195,37 @@ text-shadow: -1px 0 #191919, 0 1px #191919, 1px 0 #191919, 0 -1px #191919;
 	content: attr(placeholder);
 }
 
-
-.login-card span{
-	color:gray;
-	width:100%;
-	text-align:center;
+.login-card span {
+	color: gray;
+	width: 100%;
+	text-align: center;
 	display: inline-block;
 }
 
-.login-card span>a{
-	user-select:none;
+.login-card span>a {
+	user-select: none;
 }
-
 
 /* ------------------------------------------
 
 div input list set
 
 ------------------------------------------ */
-.div_input_max{
-	max-width:200px;
-}
-.div_show_max{
-	max-width:110px;
-}
-th.text-center{
-	max-width:200px;
-}
-#grid1{
-	table-layout:fixed;
+.div_input_max {
+	max-width: 200px;
 }
 
+.div_show_max {
+	max-width: 110px;
+}
+
+th.text-center {
+	max-width: 200px;
+}
+
+#grid1 {
+	table-layout: fixed;
+}
 
 /* ---------------------------------------
 
@@ -253,10 +258,13 @@ Primary style
 active붙었을때
 
 ---------------------------------- */
-.active>a{
-	/*color:gray;*/
+.active>a {
+	color:red;
+	
 }
-
+.active{
+	text-decoration:underline;
+}
 
 /* -------------------------------- 
 

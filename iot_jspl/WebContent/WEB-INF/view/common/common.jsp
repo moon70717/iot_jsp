@@ -13,7 +13,5 @@
 %>
 <c:set var="menuMap" value="<%=menuMap%>" scope="page" />
 <c:set var="title" value="JSTL TEST" scope="page" />
-<c:forEach items="${menuMap }" var="menu">
-	<a href="${menu.value }">${menu.key }</a>
-</c:forEach>
 <br>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

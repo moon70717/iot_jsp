@@ -38,7 +38,6 @@ public class JspServlet extends HttpServlet {
 		System.out.println("jsp servlet");
 		uri=uri.replace("iot_jspl/", "");
 		uri = "/WEB-INF" + uri + ".jsp";
-		System.out.print(uri);
 		
 		if(uri.indexOf("user/list")!=-1){
 			UserService us=new UserServiceImpl();

@@ -33,7 +33,7 @@
 		</thead>
 		<tbody id="result_tb">
 			<c:forEach items="${userList}" var="user">
-				<tr>${user.uiNo}<br>
+				<tr>
 					<td>${user.uiNo}</td>
 					<td>${user.uiName}</td>
 					<td>${user.uiAge}</td>
@@ -46,14 +46,49 @@
 		</tbody>
 	</table>
 	<br />
-	<input type="text" placeholder="search by name"/>
+	<input type="text" placeholder="search by name" id="searchT"/>
 	<input type="button" value="search" onclick="onSearch()"/> 
 </body>
 <script>
 	function onSearch(){
 		var el="${userList}";// 따음표 붙여야됨
-		alert(el);
-		$("#result_tb")
+		var result=$("#result_tb");
+		result.empty();
+		var search=$("#searchT").val();
+		var str=search;
+		
+		str+='<c:forEach items="'+'${userList}'+'" var="user">;
+        str+=        
+		
+		result.html(str);
+		
+		<%-- $.ajax({
+            url: '<%=rootPath%>/user/search',
+            data: param,
+            type: 'get',
+            success: function(res) {
+                var obj = JSON.parse(res);
+                alert(obj.msg);
+                if (obj.login == "ok") {
+                    location.href = "<%=rootPath%>/";
+                    str='<c:forEach items="${userList}" var="user">
+				<tr>
+					<td>${user.uiNo}</td>
+					<td>${user.uiName}</td>
+					<td>${user.uiAge}</td>
+					<td>${user.uiId}</td>
+					<td>${user.uiRegdate}</td>
+					<td>${user.address}</td>
+					<td>null</td>
+				</tr>
+			</c:forEach>';
+                    result.html(str);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("ㄴㄴ");
+            }
+        }); --%>
 	}
 </script>
 </html>

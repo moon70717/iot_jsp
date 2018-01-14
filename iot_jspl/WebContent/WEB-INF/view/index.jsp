@@ -11,6 +11,7 @@
 <title>${title}</title>
 </head>
 <body>
+<a href="<%=rootPath%>/view/list">list</a><br>
 	<%
 		List<String> strList = new ArrayList<String>();
 		strList.add("A");

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/view/common/common.jsp"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,12 +10,13 @@
 <title>Insert title here</title>
 </head>
 <style>
-	#grid1{
-	text-align:center;
-	}
-	#gird1 th, #grid1 td{
-	    border: 1px solid black;
-	}
+#grid1 {
+	text-align: center;
+}
+
+#gird1 th, #grid1 td {
+	border: 1px solid black;
+}
 </style>
 <body>
 	유저리스트
@@ -46,49 +49,46 @@
 		</tbody>
 	</table>
 	<br />
-	<input type="text" placeholder="search by name" id="searchT"/>
-	<input type="button" value="search" onclick="onSearch()"/> 
+	<input type="text" placeholder="search by name" id="searchT" />
+	<input type="button" value="search" onclick="onSearch()" />
 </body>
 <script>
 	function onSearch(){
 		var el="${userList}";// 따음표 붙여야됨
-		var result=$("#result_tb");
-		result.empty();
+		var result_tb=$("#result_tb");
+		result_tb.empty();
 		var search=$("#searchT").val();
-		var str=search;
+		var param={result:search};
 		
-		str+='<c:forEach items="'+'${userList}'+'" var="user">;
-        str+=        
 		
-		result.html(str);
-		
-		<%-- $.ajax({
-            url: '<%=rootPath%>/user/search',
-            data: param,
-            type: 'get',
-            success: function(res) {
-                var obj = JSON.parse(res);
-                alert(obj.msg);
-                if (obj.login == "ok") {
-                    location.href = "<%=rootPath%>/";
-                    str='<c:forEach items="${userList}" var="user">
-				<tr>
-					<td>${user.uiNo}</td>
-					<td>${user.uiName}</td>
-					<td>${user.uiAge}</td>
-					<td>${user.uiId}</td>
-					<td>${user.uiRegdate}</td>
-					<td>${user.address}</td>
-					<td>null</td>
-				</tr>
-			</c:forEach>';
-                    result.html(str);
-                }
-            },
-            error: function(xhr, status, error) {
-                alert("ㄴㄴ");
-            }
-        }); --%>
+		$.ajax({
+            url: '<%=rootPath%>
+	/user/search',
+			data : param,
+			type : 'get',
+			success : function(res) {
+				var obj = JSON.parse(res);
+				alert(obj.msg);
+				if (obj.login == "ok") {
+
+					str = '<c:forEach items="${userList}" var="user">';
+					str += '<tr>';
+					str += '<td>${user.uiNo}</td>';
+					str += '<td>${user.uiName}</td>';
+					str += '<td>${user.uiAge}</td>';
+					str += '<td>${user.uiId}</td>';
+					str += '<td>${user.uiRegdate}</td>';
+					str += '<td>${user.address}</td>';
+					str += '<td>null</td>';
+					str += '</tr>';
+					str += '</c:forEach>';
+					result.html(str);
+				}
+			},
+			error : function(xhr, status, error) {
+				alert("ㄴㄴ");
+			}
+		});
 	}
 </script>
 </html>

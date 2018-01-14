@@ -13,17 +13,6 @@ import com.jspl.test.vo.UserClass;
 public class UserServiceImpl implements UserService{
 	UserDAO uDAO=new UserDAOImpl();
 	
-	
-	public UserClass getUserClass(int i) {
-		UserClass uc=new UserClass();
-		uc.setUiNo(i);
-		uc.setUiName("이름"+i);
-		uc.setUiAge(i);
-		uc.setUiId("아이디"+i);
-		uc.setAddress("주소"+i);
-		return uc;
-	}
-	
 	private List<UserClass> getUserClassList(){
 		List<UserClass> userList=new ArrayList<UserClass>();
 		/*for(int i=0;i<10;i++) {
@@ -38,6 +27,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void getUserList(HttpServletRequest req) {
 		List<UserClass> userList=getUserClassList();
+		req.setAttribute("userList", userList);
+	}
+
+	@Override
+	public void getSearchList(HttpServletRequest req, String name) {
+		List<UserClass> userList=uDAO.getSerachList(name);
 		req.setAttribute("userList", userList);
 	}
 

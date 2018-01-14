@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,12 +19,12 @@
 			<br>
 			<form>
 				<input type="text" id="userId" name="userId" placeholder="UserId">
-				<input type="password" id="userPwd" name="userPwd" placeholder="Password"> 
-					<span> 
-					<input type="checkbox" id="saveId" name="saveId"> 
-					<a onclick="alsoCheck()">Remember Id</a>
-				</span> 
-				<input type="button" id="loginBtn" class="login login-submit" value="login" onclick="checkValue()">
+				<input type="password" id="userPwd" name="userPwd"
+					placeholder="Password"> <span> <input
+					type="checkbox" id="saveId" name="saveId"> <a
+					onclick="alsoCheck()">Remember Id</a>
+				</span> <input type="button" id="loginBtn" class="login login-submit"
+					value="login" onclick="checkValue()">
 			</form>
 
 			<div class="login-help">
@@ -96,15 +96,15 @@ $(document).ready(function(){
                     var obj = JSON.parse(res);
                     alert(obj.msg);
                     if (obj.login == "ok") {
-                        location.href = "<%=rootPath%>/";
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert("ㄴㄴ");
-                }
-            })
-        }
-
-    </script>
+                        location.href = "<%=rootPath%>
+	/";
+				}
+			},
+			error : function(xhr, status, error) {
+				alert("ㄴㄴ");
+			}
+		})
+	}
+</script>
 
 </html>

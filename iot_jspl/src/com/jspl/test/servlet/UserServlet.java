@@ -3,21 +3,23 @@ package com.jspl.test.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.jspl.test.service.UserService;
 import com.jspl.test.service.impl.UserServiceImpl;
 
-public class JspServlet extends HttpServlet {
+public class UserServlet extends HttpServlet {
+	UserService us=new UserServiceImpl();
+	Gson gs = new Gson();
 
 	public String getCommand(String uri) {
-		int idx = uri.lastIndexOf(".");
+		int idx = uri.lastIndexOf("/");
 		if (idx != -1) {
-			return uri.substring(0,idx);
+			return uri.substring(idx + 1);
 		}
 		return "";
 	}
@@ -33,20 +35,18 @@ public class JspServlet extends HttpServlet {
 	}
 
 	public void doProcess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
+		System.out.print("encode: "+ req.getCharacterEncoding());
 		PrintWriter out=res.getWriter();
-		String uri = req.getRequestURI();
-		System.out.println("jsp servlet");
-		System.out.println(uri);
-		uri=uri.replace("iot_jspl/", "");
-		
-		uri = "/WEB-INF" + uri + ".jsp";
-		System.out.println(uri);
-		if(uri.indexOf("user/list")!=-1){
-			UserService us=new UserServiceImpl();
-			us.getUserList(req);
+		String uri = (String) req.getRequestURI();
+		System.out.println("user servlet");
+		String cmd = getCommand(uri);
+		System.out.println("cmd now : " + cmd);
+		if (cmd.equals("search")) {
+			
 		}
-		RequestDispatcher rd = req.getRequestDispatcher(uri);
-		
-		rd.forward(req, res);
 	}
 }
+
+
+
+

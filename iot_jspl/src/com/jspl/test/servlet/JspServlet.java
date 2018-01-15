@@ -13,11 +13,12 @@ import com.jspl.test.service.UserService;
 import com.jspl.test.service.impl.UserServiceImpl;
 
 public class JspServlet extends HttpServlet {
+	UserService us = new UserServiceImpl();
 
 	public String getCommand(String uri) {
 		int idx = uri.lastIndexOf(".");
 		if (idx != -1) {
-			return uri.substring(0,idx);
+			return uri.substring(0, idx);
 		}
 		return "";
 	}
@@ -33,20 +34,16 @@ public class JspServlet extends HttpServlet {
 	}
 
 	public void doProcess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		PrintWriter out=res.getWriter();
+		PrintWriter out = res.getWriter();
 		String uri = req.getRequestURI();
 		System.out.println("jsp servlet");
-		System.out.println(uri);
-		uri=uri.replace("iot_jspl/", "");
-		
+		uri = uri.replace("iot_jspl/", "");
 		uri = "/WEB-INF" + uri + ".jsp";
 		System.out.println(uri);
-		if(uri.indexOf("user/list")!=-1){
-			UserService us=new UserServiceImpl();
+		if (uri.indexOf("user/list") != -1) {
 			us.getUserList(req);
 		}
 		RequestDispatcher rd = req.getRequestDispatcher(uri);
-		
 		rd.forward(req, res);
 	}
 }

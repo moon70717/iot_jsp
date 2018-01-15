@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import com.jspl.test.common.DBCon;
 import com.jspl.test.dao.UserDAO;
 import com.jspl.test.vo.UserClass;
@@ -20,30 +18,36 @@ public class UserDAOImpl implements UserDAO {
 	
 	
 	@Override
-	public List<UserClass> getUserClassList() {
+	public List<UserClass> getUserClassList(String uiName) {
 		con=null;
 		ps=null;
 		rs=null;
 		con=DBCon.getCon();
 		String sql="select * from user_Info ui, class_Info ci where ui.cino=ci.cino";
 		List<UserClass> userList=new ArrayList<UserClass>();
+		if(uiName!=null) {
+			sql+=" and uiName like ?";
+		}
 		
 		try {
 			ps=con.prepareStatement(sql);
+			if(uiName!=null&&uiName.length()!=0) {
+				ps.setString(1, "%"+uiName+"%");
+			}
 			rs=ps.executeQuery();
 			while(rs.next()) {
-				UserClass uc=new UserClass();
-				uc.setUiAge(rs.getInt("uiAge"));
-				uc.setUiId(rs.getString("uiId"));
-				uc.setUiName(rs.getString("uiName"));
-				uc.setUiNo(rs.getInt("uiAge"));
-				uc.setUiPwd(rs.getString("uiPwd"));
-				uc.setUiRegdate(rs.getString("uiRegdate"));
-				uc.setAddress(rs.getString("address"));
-				uc.setCiDesc(rs.getString("ciDesc"));
-				uc.setCiName(rs.getString("ciName"));
-				uc.setCiNo(rs.getInt("ciNo"));
-				userList.add(uc);
+					UserClass uc=new UserClass();
+					uc.setUiAge(rs.getInt("uiAge"));
+					uc.setUiId(rs.getString("uiId"));
+					uc.setUiName(rs.getString("uiName"));
+					uc.setUiNo(rs.getInt("uiAge"));
+					uc.setUiPwd(rs.getString("uiPwd"));
+					uc.setUiRegdate(rs.getString("uiRegdate"));
+					uc.setAddress(rs.getString("address"));
+					uc.setCiDesc(rs.getString("ciDesc"));
+					uc.setCiName(rs.getString("ciName"));
+					uc.setCiNo(rs.getInt("ciNo"));
+					userList.add(uc);
 			}
 			
 		} catch (SQLException e) {

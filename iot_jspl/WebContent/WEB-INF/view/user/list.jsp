@@ -49,21 +49,24 @@
 		</tbody>
 	</table>
 	<br />
-	<input type="text" placeholder="search by name" id="searchT" />
-	<input type="button" value="search" onclick="onSearch()" />
+	<form>
+		<input type="text" placeholder="search by name" name="uiName" /> 
+		<input type="submit" value="search" />
+	</form>
+
 </body>
 <script>
-	function onSearch(){
-		var el="${userList}";// 따음표 붙여야됨
-		var result_tb=$("#result_tb");
+	function onSearch() {
+		var el = "${userList}";// 따음표 붙여야됨
+		var result_tb = $("#result_tb");
 		result_tb.empty();
-		var search=$("#searchT").val();
-		var param={result:search};
-		
-		
+		var search = $("#searchT").val();
+		var param = {
+			search : search
+		};
+		param = "param=" + JSON.stringify(param);
 		$.ajax({
-            url: '<%=rootPath%>
-	/user/search',
+			url : '/view/user/search',
 			data : param,
 			type : 'get',
 			success : function(res) {

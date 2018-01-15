@@ -35,13 +35,16 @@ public class UserServlet extends HttpServlet {
 	}
 
 	public void doProcess(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		System.out.print("encode: "+ req.getCharacterEncoding());
+		
 		PrintWriter out=res.getWriter();
 		String uri = (String) req.getRequestURI();
 		System.out.println("user servlet");
 		String cmd = getCommand(uri);
 		System.out.println("cmd now : " + cmd);
+		String name=req.getParameter("param");
 		if (cmd.equals("search")) {
+			/*us.getSearchList(req, name);*/
+			out.println("ssda");
 			
 		}
 	}

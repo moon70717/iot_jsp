@@ -9,7 +9,7 @@ import com.iot.test.service.MenuService;
 public class MenuServiceImpl implements MenuService {
 	MenuDAO mDAO=new MenuDAOImpl();
 	@Override
-	public void getMenuList(HttpServletRequest req) {
+	public void setMenuList(HttpServletRequest req) {
 		req.setAttribute("menuList", mDAO.selectMenuList());
 
 	}

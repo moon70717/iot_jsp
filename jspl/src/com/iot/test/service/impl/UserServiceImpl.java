@@ -14,9 +14,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void getUserList(HttpServletRequest req) {
 		UserInfo ui=null;
-		String json=req.getParameter("param");
+		String json=req.getParameter("uiName");
+		System.out.println(json);
 		if(json!=null) {
-			ui=gs.fromJson(json, UserInfo.class);
+			ui=new UserInfo();
+			ui.setUiName(json);
+			System.out.println("uiName= "+ui.getUiName());
 		}
 		req.setAttribute("userList", uDAO.selectUserList(ui));
 	}

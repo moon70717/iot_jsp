@@ -35,7 +35,7 @@ public class JspServlet extends HttpServlet {
 		String root=req.getContextPath();
 		uri=uri.replace("/jspl", "");
 		System.out.println("root: "+root);
-		ms.getMenuList(req);
+		ms.setMenuList(req);
 		if(uri.indexOf("user/list")!=-1) {
 			UserService us=new UserServiceImpl();
 			us.getUserList(req);
@@ -43,6 +43,7 @@ public class JspServlet extends HttpServlet {
 			ClassService ci=new ClassServiceImpl();
 			ci.getClassList(req);
 		}
+		req.setAttribute("rootPath", root);
 		uri="/WEB-INF"+uri+".jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(uri);
 		System.out.println("final uri: "+uri);

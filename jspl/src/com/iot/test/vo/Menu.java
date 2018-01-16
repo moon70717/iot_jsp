@@ -30,5 +30,8 @@ public class Menu {
 	public void setmDesc(String mDesc) {
 		this.mDesc = mDesc;
 	}
+	public String toString() {
+		return "Menu[mNum="+mNum+", mName="+mName+", mUrl="+mUrl+", nDesc="+mDesc+"]";
+	}
 	
 }

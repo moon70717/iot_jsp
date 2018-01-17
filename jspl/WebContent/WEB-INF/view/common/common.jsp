@@ -7,5 +7,6 @@
 	<c:forEach items="${menuList}" var="menuL">
 		<a href="${rootPath}${menuL.mUrl}" title="${menuL.mDesc}">${menuL.mName}</a>
 		<br />
-	</c:forEach>
+	</c:forEach> 
 </nav>
+   

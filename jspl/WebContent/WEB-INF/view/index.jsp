@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<%@ include file="/WEB-INF/view/common/common.jsp"%>
 <body>
 index
 </body>

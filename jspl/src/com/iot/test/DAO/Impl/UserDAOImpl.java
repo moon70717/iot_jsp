@@ -19,7 +19,16 @@ public class UserDAOImpl implements UserDAO {
 		List<UserInfo> userList=new ArrayList<UserInfo>();
 		String sql="select * from user_info where 1=1";
 		if(ui!=null) {
-			sql+=" and uiname like ?";
+			String searchType=ui.getSearchType();
+			if(searchType.equals("name")) {
+				sql+=" and uiname like ?";
+			}else if(searchType.equals("age")){
+				sql+=" and uiage like ?";
+			}else {
+				sql+=" and address like ?";
+			}
+			
+			
 		}
 		Connection con=null;
 		PreparedStatement ps=null;

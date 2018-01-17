@@ -15,11 +15,22 @@
 	if (name == null) {
 		name = "";
 	}
+	String searchType = request.getParameter("searchType");
+	if (searchType == null) {
+		searchType = "";
+	}
 %>
 <body>
 	<form>
-		<input type="text" placeholder="이름을 입력하세요" name="uiName" id="input" value="<%=name%>" /> 
-		<input type="submit" value="찾기" /><br>
+	<select name="selectB">
+	<option value="name" <%=searchType %>>이름</option>
+	<option value="age" <%=searchType %>>나이</option> 
+	<option value="address" <%=searchType %>>주소</option>
+	</select>
+		<input type="text" placeholder="입력하세요" name="uiName" id="input" value="<%=name %>" /> 
+		<!-- <input type="submit" value="찾기" /> -->
+		<button>찾기</button>
+		<br>
 	</form>
 	<h4>유저리스트</h1>
 	<table border="1">

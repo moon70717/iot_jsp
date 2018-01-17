@@ -10,6 +10,13 @@ public class UserInfo {
 	private int ciNo;
 	private String uiRegdate;
 	private String address;
+	private String searchType;
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
 	public int getUiNo() {
 		return uiNo;
 	}
@@ -61,6 +68,6 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		return "UserClass[ciNO="+ciNo+", ciName="+", uiNo="+uiNo+", uiName="+uiName+", uiAge="+uiAge+
-				", uiId="+uiId+", uiPwd="+uiPwd+", uiRegdate="+uiRegdate+", address"+address+"]";
+				", uiId="+uiId+", uiPwd="+uiPwd+", uiRegdate="+uiRegdate+", address"+address+", searchType="+searchType+"]";
 	}
 }

@@ -15,9 +15,10 @@ public class ClassServiceImpl implements ClassService {
 	@Override
 	public void getClassList(HttpServletRequest req) {
 		ClassInfo ci = null;
-		String json = req.getParameter("param");
-		if (json != null) {
-			ci = gs.fromJson(json, ClassInfo.class);
+		String param = req.getParameter("param");
+		if (param != null) {
+			ci.setCiName(param);
+			System.out.println("uiName= "+ci.getCiName());
 		}
 		req.setAttribute("classList", cDAO.selectClassList(ci));
 		/*System.out.println(req.getAttribute("classList").toString());*/

@@ -6,5 +6,9 @@ import com.iot.test.vo.Customer;
 
 public interface CustomerDAO {
 
-	public List<Customer> selectCustomerList(Customer cus,String orderStr,String orderby);
+	public List<Customer> selectCustomerList(String orderby, Customer cus);
+	
+	public int insertCustomer(Customer cus);
+	
+	public int deleteCustomer(int cuId);
 }

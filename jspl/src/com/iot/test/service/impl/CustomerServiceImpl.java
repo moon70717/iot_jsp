@@ -11,15 +11,85 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDAO cDAO=new CustomerDAOImpl();
 	@Override
 	public void setCustomerList(HttpServletRequest req) {
-		String order=req.getParameter("order");
-		String orderby=req.getParameter("orderby");
+		String order=(req.getParameter("order")==null)? "customerId":req.getParameter("order");
+		String orderStr="customerId asc,customerName asc,city asc,country asc";
+		String search=req.getParameter("search");
 		
-		Customer cus=null;
-		String param=req.getParameter("param");
-		if(param!=null) {
-			cus.setCustomerName(param);
+		Customer cus=new Customer();
+		if(search!=null) {
+			cus.setCustomerName(search);
 		}
-		System.out.println("orderby= "+orderby);
-		req.setAttribute("customerList", cDAO.selectCustomerList(cus,order,orderby));
+		System.out.println("get button name "+req.getParameter("name"));
+		if(req.getParameter("orderStr")!=null) {
+			orderStr=req.getParameter("orderStr");
+			int fIdx=orderStr.indexOf(order);
+			String temp=orderStr.substring(fIdx);
+			int lIdx=temp.indexOf(",");
+			String type=temp.substring(0);
+			if(lIdx!=-1) {
+				type=temp.substring(0,lIdx);
+			}
+			orderStr=orderStr.replace(type+",", "");
+			type=(type.trim().equals(order+" asc"))?" desc,":" asc,"; 
+			orderStr=order+type+orderStr;
+		}
+		
+		
+		
+		/*if(req.getParameter("orderStr")!=null) {
+			orderStr=req.getParameter("orderStr");
+			int fIdx=orderStr.indexOf(order);
+			String targetStr=orderStr.substring(fIdx);
+			int lIdx=targetStr.indexOf(",");
+			String orderType=targetStr.substring(0);
+			if(lIdx!=-1) {
+				orderType=targetStr.substring(0,lIdx);
+			}
+			orderStr=orderStr.replace(orderType+",","");
+			if(orderType.trim().equals(order+" asc")) {
+				orderType=" desc,";
+			}else {
+				orderType=" asc,";
+			}
+			orderStr=order+orderType+orderStr;
+		}*/
+		req.setAttribute("search", search);
+		req.setAttribute("order", order);
+		req.setAttribute("orderStr", orderStr);
+		req.setAttribute("customerList", cDAO.selectCustomerList(orderStr, cus));
+	}
+	@Override
+	public void insertCustomer(HttpServletRequest req) {
+		Customer cus=new Customer();
+		if(req.getParameter("customerName")!=null) {
+			cus.setCustomerName(req.getParameter("customerName"));
+			cus.setCity(req.getParameter("city"));
+			cus.setCountry(req.getParameter("country"));
+		}else {
+			return;
+		}
+		req.setAttribute("result", "failed");
+		int result=cDAO.insertCustomer(cus);
+		if(result!=0) {
+			req.setAttribute("result", "suecces");
+		}
+	}
+	@Override
+	public void deleteCustomer(HttpServletRequest req) {
+		System.out.println("setvice!");
+		String temp=req.getParameter("cuId");
+		System.out.println("temp= "+temp);
+		int cuId=0;
+		if(req.getParameter("cuId")!=null) {
+			cuId=Integer.parseInt(temp);
+			System.out.println("cuId"+cuId);
+		}else {
+			return;
+		}
+		req.setAttribute("result", "failed");
+		int result=cDAO.deleteCustomer(cuId);
+		if(result!=0) {
+			req.setAttribute("result", "suecces");
+		}
 	}
 }

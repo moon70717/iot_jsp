@@ -1,0 +1,31 @@
+삭제할때
+
+
+셀렉트 박스를 선택한뒤 삭제버튼을 누름->>>>>
+
+function으로 가서 setParam으로 btn의 명령을 지정해줌(type=del정도면 될듯)
+form=""으로 되어있는 애들은 
+servlet에서 해당하는 명령에 따라 각각의 서비스로 분기를 해줌
+서비스--->DAO--->서비스--->서블렛---->리다리엑트 끝
+
+onclick="window.location.href='${root}/view/customer/list?order=customerId&orderStr=${orderStr}'
+이걸로 cuid를 넣어서 보내주면 될듯
+근데 않이뻐서 좀 그럼 걍 딴거찾자
+
+
+
+
+
+수정할때
+
+selectBox가 된애들 cuid를 받아와서 수정칸으로 보냄
+그뒤 그 칸에따란 애들을 뽑아와서 출력함
+그 칸에서 바꿀수있게 하면 될듯
+수정 끝나면 list로 돌아가게 리다이렉트
+
+
+${root}/view/customer/list?order=customerId&orderStr=${orderStr}
+
+location.href();
+
+window.location.href='${root}/view/customer/list?order=customerId&orderStr=${orderStr}'

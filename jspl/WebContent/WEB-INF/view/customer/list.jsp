@@ -73,8 +73,7 @@ td>input[type="submit"] {
 						form="delete${customer.customerId}" name="cuId" readonly />
 						</td>
 					<%-- <td>${customer.customerId}</td> --%>
-					<input type="text" name="cuName" form="edit${customer.customerId}"/>
-					<%-- <td>${customer.customerName}</td> --%>
+					<td>${customer.customerName}</td>
 					<td>${customer.city}</td>
 					<td>${customer.country}</td>
 					<td><input type="submit" value="del" name="type"

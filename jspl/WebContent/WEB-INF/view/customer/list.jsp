@@ -75,8 +75,8 @@ function deleteCus(cuId) {
             url: '${root}/view/customer/delete',
             data: cuId,
             type: 'post',
-            success: function() {
-                alert("${result}");
+            success: function(result) {
+                alert(result);
                 location.reload();
             },
             error: function(xhr, status, error) {

@@ -31,8 +31,8 @@ public class JspServlet extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		res.setCharacterEncoding("utf-8");
 		res.setContentType("text/html;charset=utf-8");
-		
-		CustomerService cs=new CustomerServiceImpl();
+
+		CustomerService cs = new CustomerServiceImpl();
 		MenuService ms = new MenuServiceImpl();
 		String uri = req.getRequestURI();
 		String root = req.getContextPath();
@@ -46,15 +46,18 @@ public class JspServlet extends HttpServlet {
 			ClassService ci = new ClassServiceImpl();
 			ci.getClassList(req);
 		} else if (uri.indexOf("customer/list") != -1) {
+			if (req.getParameter("type") != null) {
+				cs.deleteCustomer(req);
+			}
 			cs.setCustomerList(req);
-			
-		} else if (uri.indexOf("customer/insert")!=-1) {
+			System.out.println("btn= " + req.getParameter("check"));
+		} else if (uri.indexOf("customer/insert") != -1) {
 			cs.insertCustomer(req);
-		} else if(uri.indexOf("customer/delete")!=-1) {
-			System.out.println("uri= "+uri);
+		} else if (uri.indexOf("customer/delete") != -1) {
+			System.out.println("uri= " + uri);
 			cs.deleteCustomer(req);
-			uri="/view/customer/list";
-			
+			uri = "/view/customer/list";
+
 		}
 		req.setAttribute("rootPath", root);
 		uri = "/WEB-INF" + uri + ".jsp";

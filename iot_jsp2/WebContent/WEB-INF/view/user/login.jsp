@@ -96,8 +96,7 @@ $(document).ready(function(){
                     var obj = JSON.parse(res);
                     alert(obj.msg);
                     if (obj.login == "ok") {
-                        location.href = "<%=rootPath%>
-	/";
+                        location.href = "<%=rootPath%>/";
 				}
 			},
 			error : function(xhr, status, error) {

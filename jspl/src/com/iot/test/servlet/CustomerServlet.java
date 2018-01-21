@@ -8,16 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.iot.test.service.ClassService;
 import com.iot.test.service.CustomerService;
 import com.iot.test.service.MenuService;
-import com.iot.test.service.UserService;
-import com.iot.test.service.impl.ClassServiceImpl;
 import com.iot.test.service.impl.CustomerServiceImpl;
 import com.iot.test.service.impl.MenuServiceImpl;
-import com.iot.test.service.impl.UserServiceImpl;
 
-public class JspServlet extends HttpServlet {
+public class CustomerServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		doProcess(req, res);
@@ -33,30 +29,24 @@ public class JspServlet extends HttpServlet {
 		res.setContentType("text/html;charset=utf-8");
 
 		CustomerService cs = new CustomerServiceImpl();
-		ClassService ci = new ClassServiceImpl();
 		MenuService ms = new MenuServiceImpl();
 		String uri = req.getRequestURI();
 		String root = req.getContextPath();
-		uri = uri.replace(root, "");
-		System.out.println("root: " + root);
-		ms.setMenuList(req);
-		if (uri.indexOf("user/list") != -1) {
-			UserService us = new UserServiceImpl();
-			us.getUserList(req);
-		} else if (uri.indexOf("class/list") != -1) {
-			ci.getClassList(req);
-		} else if (uri.indexOf("class/insert") != -1) {
-			ci.insertClass(req);
-		} else if (uri.indexOf("customer/list") != -1) {
-			cs.setCustomerList(req);
-		} else if (uri.indexOf("customer/insert") != -1) {
-			cs.insertCustomer(req);
+		
+		if (uri.indexOf("customer/delete") != -1) {
+			System.out.println("uri= " + uri);
+			cs.deleteCustomer(req);
+			uri = "/customer/list";
+		} else if(uri.indexOf("customer/edit")!=-1) {
+			cs.updateCustomer(req);
+			uri = "/customer/list";
 		}
+		
 		req.setAttribute("rootPath", root);
-		uri = "/WEB-INF" + uri + ".jsp";
+		uri = "/view" + uri;
+		
 		RequestDispatcher rd = req.getRequestDispatcher(uri);
-		System.out.println("final uri: " + uri);
+		System.out.println("customerServlet final uri: " + uri);
 		rd.forward(req, res);
 	}
-
 }

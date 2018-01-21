@@ -43,8 +43,8 @@ td>input[type="submit"] {
 			value="${orderStr}" class="noo" /> <input type="text" name="order"
 			value="${order}" class="noo" />
 	</form>
+
 	<table border="1" cellspacing="0" cellpadding="0">
-		<thead>
 			<tr>
 				<th><a
 					href="${root}/view/customer/list?order=customerId&orderStr=${orderStr}">customerId</a></th>
@@ -56,8 +56,6 @@ td>input[type="submit"] {
 					href="${root}/view/customer/list?order=country&orderStr=${orderStr}">country</a></th>
 				<th>설정</th>
 			</tr>
-		</thead>
-		<tbody>
 			<c:if test="${customerList eq null}">
 				<tr>
 					<td colspan="5">고객리스트가 없습니다</td>
@@ -65,44 +63,34 @@ td>input[type="submit"] {
 			</c:if>
 
 			<c:forEach items="${customerList}" var="customer">
-				<form id="delete${customer.customerId}">
-				<form id="edit${customer.customerId}">
+				<form id="${customer.customerId}">
 				<tr>
-				
 					<td><input type="text" value="${customer.customerId}"
-						form="delete${customer.customerId}" name="cuId" readonly />
-						</td>
-					<%-- <td>${customer.customerId}</td> --%>
-					<td>${customer.customerName}</td>
-					<td>${customer.city}</td>
-					<td>${customer.country}</td>
+						name="cuId" readonly /></td>
+					<td><input type="text" value="${customer.customerName}" name="cuName"/></td>
+					<td><input type="text" value="${customer.city}" name="city"/></td>
+					<td><input type="text" value="${customer.country}" name="country"/></td>
 					<td><input type="submit" value="del" name="type"
-						form="delete${customer.customerId}" />
-						<input type="submit" value="edit" name="type" form="edit${customer.customerId}"/>
-						<%-- <button onclick="window.location.href='${root}/view/customer/list?order=customerId&orderStr=${orderStr}'">edit</button> --%>
-						</td>
-						<%-- <td><input id="check${customer.customerId}" type="checkbox" name="check" form="delete" ></td> --%>
+						onclick="onBtn('del','${customer.customerId}')" /> 
+						<input type="submit" value="edit" name="type" onclick="onBtn('edit','${customer.customerId}')"/></td>
 				</tr>
 				</form>
-				</form>
 			</c:forEach>
-		</tbody>
 	</table>
-	<form>
-	<input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
-	<input type="submit"/>
-	</form>
-	
-	
-	<!-- <form id="delete">
-		<input type="submit" onclick="deleteCus()" name="nana"/>
-	</form> -->
+
 	<a href="${root}/view/customer/insert">고객 정보 추가</a>
 
 </body>
 <script>
-	function deleteCus() {
-		alert("asds");
+	function onBtn(ac,no){
+		var act=""
+		if(ac=='del'){
+			act="${rootPath}/customer/delete";
+		}else{
+			act="${rootPath}/customer/edit";
+		}
+		var tb=$("#"+no);
+		tb.attr("action", act);
 	}
 </script>
 </html>

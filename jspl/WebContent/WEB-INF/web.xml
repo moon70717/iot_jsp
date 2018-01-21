@@ -15,6 +15,14 @@
 		<servlet-name>JspServlet</servlet-name>
 		<url-pattern>/view/*</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>CustomerServlet</servlet-name>
+		<servlet-class>com.iot.test.servlet.CustomerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CustomerServlet</servlet-name>
+		<url-pattern>/customer/*</url-pattern>
+	</servlet-mapping>
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/IOT</res-ref-name>

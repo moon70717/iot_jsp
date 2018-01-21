@@ -95,4 +95,28 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return result;
 	}
 
+	@Override
+	public int updateCustomer(Customer cus) {
+		con=null;
+		ps=null;
+		int result=0;
+		String sql="update customer set customerName=?, city=?, country=? where customerId=?";
+		
+		try {
+			con=DBCon.getCon();
+			ps=con.prepareStatement(sql);
+			ps.setString(1, cus.getCustomerName());
+			ps.setString(2, cus.getCity());
+			ps.setString(3, cus.getCountry());
+			ps.setInt(4, cus.getCustomerId());
+			
+			result=ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 }

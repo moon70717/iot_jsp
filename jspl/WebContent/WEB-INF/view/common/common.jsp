@@ -5,7 +5,7 @@
 <c:set var="root" value="${rootPath}" />
 <nav id="nav">
 	<c:forEach items="${menuList}" var="menuL">
-		<a href="${rootPath}${menuL.mUrl}" title="${menuL.mDesc}">${menuL.mName}</a>
+		<a href="${rootPath}/${menuL.mUrl}" title="${menuL.mDesc}">${menuL.mName}</a>
 		<br />
 	</c:forEach> 
 </nav>

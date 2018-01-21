@@ -33,26 +33,6 @@ public class CustomerServiceImpl implements CustomerService {
 			type=(type.trim().equals(order+" asc"))?" desc,":" asc,"; 
 			orderStr=order+type+orderStr;
 		}
-		
-		
-		
-		/*if(req.getParameter("orderStr")!=null) {
-			orderStr=req.getParameter("orderStr");
-			int fIdx=orderStr.indexOf(order);
-			String targetStr=orderStr.substring(fIdx);
-			int lIdx=targetStr.indexOf(",");
-			String orderType=targetStr.substring(0);
-			if(lIdx!=-1) {
-				orderType=targetStr.substring(0,lIdx);
-			}
-			orderStr=orderStr.replace(orderType+",","");
-			if(orderType.trim().equals(order+" asc")) {
-				orderType=" desc,";
-			}else {
-				orderType=" asc,";
-			}
-			orderStr=order+orderType+orderStr;
-		}*/
 		req.setAttribute("search", search);
 		req.setAttribute("order", order);
 		req.setAttribute("orderStr", orderStr);
@@ -91,5 +71,19 @@ public class CustomerServiceImpl implements CustomerService {
 		if(result!=0) {
 			req.setAttribute("result", "suecces");
 		}
+	}
+	@Override
+	public void updateCustomer(HttpServletRequest req) {
+		Customer cus=new Customer();
+		cus.setCustomerName(req.getParameter("cuName"));
+		cus.setCity(req.getParameter("city"));
+		cus.setCountry(req.getParameter("country"));
+		cus.setCustomerId(Integer.parseInt(req.getParameter("cuId")));
+		req.setAttribute("result", "failed");
+		int result=cDAO.updateCustomer(cus);
+		if(result!=0) {
+			req.setAttribute("result", "suecces");
+		}
+		
 	}
 }

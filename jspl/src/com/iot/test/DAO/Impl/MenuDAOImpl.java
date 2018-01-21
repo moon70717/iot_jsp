@@ -26,7 +26,9 @@ public class MenuDAOImpl implements MenuDAO {
 			con=DBCon.getCon();
 			//con=DBConTest.getCon();
 			ps=con.prepareStatement(sql);
+			System.out.println("ps");
 			rs=ps.executeQuery();
+			System.out.println("rs");
 			while(rs.next()) {
 				Menu m=new Menu();
 				m.setmNum(rs.getInt("mNum"));
@@ -36,6 +38,7 @@ public class MenuDAOImpl implements MenuDAO {
 				menuList.add(m);
 			}
 		} catch (SQLException e) {
+			
 			DBUtil.closeAll(rs, con, ps);
 		}
 		

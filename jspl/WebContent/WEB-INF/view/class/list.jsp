@@ -25,15 +25,25 @@ if(name==null){
 클래스리스트
 	<table border="1">
 			<tr>
-				<th>이름</th>
-				<th>나이</th>
+				<th>번호</th>
+				<th>반 이름</th>
+				<th>반 설명</th>
 			</tr>
 			<c:forEach items="${classList}" var="class1">
+				<form id="${class1.ciNo}">
 				<tr>
-					<td>${class1.ciName}</td>
-					<td>${class1.ciDesc}</td>
+					<td><input type="text" value="${class1.ciNo}"
+						name="ciNo" readonly /></td>
+					<td><input type="text" value="${class1.ciName}" name="ciName"/></td>
+					<td><input type="text" value="${class1.ciDesc}" name="ciDesc"/></td>
+					<td><input type="submit" value="del" name="type"
+						onclick="onBtn('del','${class1.ciNo}')" /> 
+						<input type="submit" value="edit" name="type" onclick="onBtn('edit','${class1.ciNo}')"/></td>
 				</tr>
+				</form>
 			</c:forEach>
 	</table>
+	
+	
 </body>
 </html>

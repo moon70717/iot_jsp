@@ -65,14 +65,13 @@ td>input[type="submit"] {
 			<c:forEach items="${customerList}" var="customer">
 				<form id="${customer.customerId}">
 				<tr>
-					<td><input type="text" value="${customer.customerId}"
+					<td><input type="number" value="${customer.customerId}"
 						name="cuId" readonly /></td>
-					<td><input type="text" value="${customer.customerName}" name="cuName"/></td>
-					<td><input type="text" value="${customer.city}" name="city"/></td>
-					<td><input type="text" value="${customer.country}" name="country"/></td>
-					<td><input type="submit" value="del" name="type"
-						onclick="onBtn('del','${customer.customerId}')" /> 
-						<input type="submit" value="edit" name="type" onclick="onBtn('edit','${customer.customerId}')"/></td>
+					<td><input type="text" value="${customer.customerName}" name="cuName" id="cuName${customer.customerId}"/></td>
+					<td><input type="text" value="${customer.city}" name="city" id="city${customer.customerId}"/></td>
+					<td><input type="text" value="${customer.country}" name="country" id="country${customer.customerId}"/></td>
+					<td><input type="button" value="del" name="type" onclick="onBtn('del','${customer.customerId}')" /> 
+						<input type="button" value="edit" name="type" onclick="onBtn('edit','${customer.customerId}')"/></td>
 				</tr>
 				</form>
 			</c:forEach>
@@ -83,14 +82,31 @@ td>input[type="submit"] {
 </body>
 <script>
 	function onBtn(ac,no){
-		var act=""
+		var act="";
+		var cName=$("#cuName"+no);
+		var city=$("#city"+no);
+		var country=$("#country"+no);
 		if(ac=='del'){
 			act="${rootPath}/customer/delete";
-		}else{
+		}else if(ac=='edit'){
+			if(!cName.val()){
+				alert("name를 확인하세요");
+				cName.focus();
+				throw "stop";
+			}else if(!city.val()){
+				alert("city를 확인하세요");
+				city.focus();
+				throw "stop";
+			}else if(!country.val()){
+				alert("country를 확인하세요");
+				country.focus();
+				throw "stop";
+			}
 			act="${rootPath}/customer/edit";
 		}
 		var tb=$("#"+no);
 		tb.attr("action", act);
+		tb.submit();
 	}
 </script>
 </html>

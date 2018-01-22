@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="customer">
-	<select id="selectCustomer" parameterType="map"
-		resultType="com.iot.test.vo.Customer">
-		SELECT * FROM CUSTOMER order by ${str};
+	<select id="selectCustomer" parameterType="customer"
+		resultType="customer">
+		SELECT * FROM CUSTOMER order by customerId;
 	</select>
 	<update id="updateCustomer" parameterType="customer">
 		update customer set customerName=#{customerName}

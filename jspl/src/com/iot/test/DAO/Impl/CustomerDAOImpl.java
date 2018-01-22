@@ -7,8 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import com.iot.test.DAO.CustomerDAO;
 import com.iot.test.common.DBCon;
+import com.iot.test.common.MybatisSessionFactory;
 import com.iot.test.vo.Customer;
 
 public class CustomerDAOImpl implements CustomerDAO {
@@ -18,11 +22,13 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Override
 	public List<Customer> selectCustomerList(String orderStr, Customer cusInput) {
 		List<Customer> customerList=new ArrayList<Customer>();
+		SqlSessionFactory ssf=MybatisSessionFactory.getSqlSessionFactroy();
+		SqlSession ss=ssf.openSession();
 		String sql="select * from customer where 1=1";
 		con=null;
 		ps=null;
 		rs=null;
-		if(cusInput.getCustomerName()!=null) {
+		/*if(cusInput.getCustomerName()!=null) {
 			sql+=" and customerName like ?";
 		}
 		sql+=" order by "+orderStr;
@@ -47,8 +53,10 @@ public class CustomerDAOImpl implements CustomerDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			/*DBUtil.closeAll(rs, con, ps);*/
-		}
+			DBUtil.closeAll(rs, con, ps);
+		}*/
+		List<Customer> cList=ss.selectList("selectCustomer", cusInput);
+		customerList.addAll(cList);
 		System.out.print(customerList);
 		return customerList;
 	}
